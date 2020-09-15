@@ -40,8 +40,8 @@ public class LinkedList {
 	}
 
 	/*
-	 * listLength function takes head node as input and returns the total number of
-	 * nodes in the linkedList
+	 * length() method returns the total number of
+	 * nodes in the linkedList calculation time O(n).
 	 */
 	public int length() {
 		int n = 0;
@@ -102,6 +102,35 @@ public class LinkedList {
 		current.setNext(newNode);
 		// list length has now increased by 1.
 		length++;
+	}
+	
+	/* Remove and return a node at the beginning of list. */
+	public synchronized ListNode removeFirstElement() {
+		ListNode node = head;
+		if(node != null) {
+			head = node.getNext();
+			node.setNext(null);
+		}
+		return node;
+	}
+	
+	/* Remove and return a node at the end of the list */
+	public synchronized ListNode removeLastElement() {
+		ListNode current = head, prev = head;
+		// when list is empty
+		if(head == null) return null;
+		// when the list contains just 1 element.
+		if(current.getNext() == null) {
+			head = null;
+			return current;
+		}
+		// when the list contains more elements.
+		while(current.getNext() != null) {
+			prev = current;
+			current = current.getNext();
+		}
+		prev.setNext(null);
+		return current;
 	}
 
 	/* Print the nodes of a single LinkedList */
