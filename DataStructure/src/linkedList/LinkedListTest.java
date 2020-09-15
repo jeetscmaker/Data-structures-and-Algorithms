@@ -11,6 +11,14 @@ public class LinkedListTest {
 	list.setHead(l1);
 	l1.setNext(l2); l2.setNext(l3); l3.setNext(l4); l4.setNext(l5); l5.setNext(null);
 	list.printLinkedList();
+	ListNode l6 = new ListNode(15);
+	list.insertAtEnd(l6);
+	list.printLinkedList();
+	list.insertAtBegin(new ListNode(7));
+	list.printLinkedList();
+	list.insertAtEnd(new ListNode(1));
+	list.printLinkedList();
+	list.insert(9, 4);
 	list.printLinkedList();
 }
 }
