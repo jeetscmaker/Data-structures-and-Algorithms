@@ -132,6 +132,30 @@ public class LinkedList {
 		prev.setNext(null);
 		return current;
 	}
+	
+	/* Remove the value at a given position(index) */
+	public void remove(int position) {
+		// if list is empty, simply return.
+		if(head == null) return; 
+		// fix the position
+		if(position < 0) position = 0;
+		if(position >= length) position = length-1;
+		
+		//if removing first element
+		if(position == 0)
+			removeFirstElement();
+		else if(position == length-1)
+			removeLastElement();
+		else {
+			ListNode current = head, prev = head;
+			for(int i=0; i<position; i++) {
+				prev = current;
+				current = current.getNext();
+			}
+			prev.setNext(current.getNext());
+			current.setNext(null);
+		}
+	}
 
 	/* Print the nodes of a single LinkedList */
 	public void printLinkedList() {

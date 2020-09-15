@@ -20,5 +20,7 @@ public class LinkedListTest {
 	list.printLinkedList();
 	list.insert(9, 4);
 	list.printLinkedList();
+	list.removeLastElement();
+	list.printLinkedList();
 }
 }
