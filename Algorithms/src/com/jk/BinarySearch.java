@@ -19,6 +19,10 @@ public class BinarySearch {
 	public static void main(String[] args) {
 		int[] arr = { 2, 4, 5, 12, 44, 67, 71 };
 		int a = 65;
-		System.out.println(binarySearch(arr, a));
+		System.out.println(binarySearch(arr, a)); // should print -1
+		a = 67;
+		System.out.println(binarySearch(arr, a)); // should print 5
+		a = 12;
+		System.out.println(binarySearch(arr, a)); // should print 3
 	}
 }
