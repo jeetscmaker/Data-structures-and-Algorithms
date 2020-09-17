@@ -19,6 +19,7 @@ public class InsertionSort {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("***INSERTION SORT***\n");
 		int[] array = {5, 8, 1, 3, 9, 6};
 		// before sorting array
 		Utility.printArray(array);
