@@ -73,11 +73,67 @@ public class DoubleLinkedList {
         }
         length = length + 1;
     }
+
     // Add a new value at the rear of the list(before tail).
-    public void insertTail(int data){
-        DLLNode node  = new DLLNode(data, tail.getPrev(),tail);
+    public void insertTail(int data) {
+        DLLNode node = new DLLNode(data, tail.getPrev(), tail);
         node.getPrev().setNext(node);
         tail.setPrev(node);
         length++;
+    }
+
+    // Remove a node at a given position
+    public void remove(int position) {
+        // fixing the position
+        if (position < 0 || position >= length || head == null)
+            return;
+        if (position == 0)
+            head = head.getNext();
+        else {
+            DLLNode temp = head;
+            for (int i = 0; i < length; i++) {
+                temp = temp.getNext();
+            }
+            temp.getNext().setPrev(temp.getPrev());
+            temp.getPrev().setNext(temp.getNext());
+        }
+        length = length - 1;
+    }
+    // Remove a node which is specified.
+    public void remove(DLLNode node){
+        if (head == null)
+            return;
+        if (node.equals(head)){
+            head = head.getNext();
+            if (head == null)
+                tail = null;
+            return;
+        }
+        DLLNode p = head;
+        while(p != null){
+            if (node.equals(p)){
+               p.getPrev().setNext(p.getNext());
+               p.getNext().setPrev(p.getPrev());
+               return;
+            }
+            p = p.getNext();
+        }
+    }
+    // Remove everything from the list
+    public void clearList(){
+        head = null;
+        tail = null;
+        length = 0;
+    }
+    // Printing all the elements of the list.
+    public void printLinkedList() {
+        DLLNode current = head;
+        while (current != null) {
+            if (current.getNext() != null)
+                System.out.print(current.getData() + "->");
+            else
+                System.out.println(current.getData());
+            current = current.getNext();
+        }
     }
 }
