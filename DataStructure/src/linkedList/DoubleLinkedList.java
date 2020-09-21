@@ -99,4 +99,24 @@ public class DoubleLinkedList {
         }
         length = length - 1;
     }
+    // Remove a node which is specified.
+    public void remove(DLLNode node){
+        if (head == null)
+            return;
+        if (node.equals(head)){
+            head = head.getNext();
+            if (head == null)
+                tail = null;
+            return;
+        }
+        DLLNode p = head;
+        while(p != null){
+            if (node.equals(p)){
+               p.getPrev().setNext(p.getNext());
+               p.getNext().setPrev(p.getPrev());
+               return;
+            }
+            p = p.getNext();
+        }
+    }
 }
