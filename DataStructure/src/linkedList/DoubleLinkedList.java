@@ -73,11 +73,30 @@ public class DoubleLinkedList {
         }
         length = length + 1;
     }
+
     // Add a new value at the rear of the list(before tail).
-    public void insertTail(int data){
-        DLLNode node  = new DLLNode(data, tail.getPrev(),tail);
+    public void insertTail(int data) {
+        DLLNode node = new DLLNode(data, tail.getPrev(), tail);
         node.getPrev().setNext(node);
         tail.setPrev(node);
         length++;
+    }
+
+    // Remove a node at a given position
+    public void remove(int position) {
+        // fixing the position
+        if (position < 0 || position >= length || head == null)
+            return;
+        if (position == 0)
+            head = head.getNext();
+        else {
+            DLLNode temp = head;
+            for (int i = 0; i < length; i++) {
+                temp = temp.getNext();
+            }
+            temp.getNext().setPrev(temp.getPrev());
+            temp.getPrev().setNext(temp.getNext());
+        }
+        length = length - 1;
     }
 }
