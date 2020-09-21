@@ -119,4 +119,21 @@ public class DoubleLinkedList {
             p = p.getNext();
         }
     }
+    // Remove everything from the list
+    public void clearList(){
+        head = null;
+        tail = null;
+        length = 0;
+    }
+    // Printing all the elements of the list.
+    public void printLinkedList() {
+        DLLNode current = head;
+        while (current != null) {
+            if (current.getNext() != null)
+                System.out.print(current.getData() + "->");
+            else
+                System.out.println(current.getData());
+            current = current.getNext();
+        }
+    }
 }
