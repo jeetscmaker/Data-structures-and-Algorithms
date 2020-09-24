@@ -30,3 +30,4 @@ local.properties
 
 # For intelliJ IDEA
 *.iml
+.idea/
