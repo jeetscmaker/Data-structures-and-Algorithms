@@ -42,6 +42,16 @@ public class CircularLinkedList {
 		return length;
 	}
 	
+	/* Return data at the head of the list. */
+	public int peek() {
+		return tail.getNext().getData();
+	}
+	
+	/* Return data at the tail of the list. */
+	public int peekTail() {
+		return tail.getData();
+	}
+	
 	/* print the elements of the circular LinkedList. */
 	public void print() {
 		CLLNode t = tail.getNext();
