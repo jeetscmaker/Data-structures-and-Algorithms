@@ -25,6 +25,12 @@ public class CircularLinkedList {
 		length++;
 	}
 	
+	/* Add data to the tail of the list. */
+	public void addToTail(int data) {
+		addToHead(data);
+		tail = tail.getNext();
+	}
+	
 	/* This method finds out the length of the Circular Linked List. */
 	public int length() {
 		int length = 0;
