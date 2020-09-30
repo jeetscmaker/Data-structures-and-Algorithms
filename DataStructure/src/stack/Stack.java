@@ -47,4 +47,19 @@ public class Stack {
 		return data;
 	}
 
+	// Return a string representation of the stack.
+	public String toString() {
+		StringBuilder sb = new StringBuilder("[");
+		if (size() == 0)
+			return sb.append("]").toString();
+		sb.append(stackRep[0]);
+		if (size() > 1) {
+			for (int i = 1; i < stackRep.length; i++) {
+				sb.append(",").append(stackRep[i]);
+			}
+			sb.append("]");
+		}
+		return sb.toString();
+
+	}
 }
