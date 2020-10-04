@@ -65,8 +65,8 @@ public class Stack {
 			for (int i = 1; i < stackRep.length; i++) {
 				sb.append(",").append(stackRep[i]);
 			}
-			sb.append("]");
 		}
+		sb.append("]");
 		return sb.toString();
 
 	}

@@ -59,8 +59,8 @@ public class Stack3 {
 				sb.append(",").append(current.getData());
 				current = current.getNext();
 			}
-			sb.append("]");
 		}
+		sb.append("]");
 		return sb.toString();
 
 	}
