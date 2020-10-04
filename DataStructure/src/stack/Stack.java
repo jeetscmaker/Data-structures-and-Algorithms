@@ -1,5 +1,7 @@
 package stack;
 
+import java.util.EmptyStackException;
+
 /**
  * Simple array based implementation of Stack data structure.
  */
@@ -45,6 +47,12 @@ public class Stack {
 		int data = stackRep[top];
 		stackRep[top--] = Integer.MIN_VALUE;
 		return data;
+	}
+
+	public int peek() {
+		if (isEmpty())
+			throw new EmptyStackException();
+		return stackRep[top];
 	}
 
 	// Return a string representation of the stack.

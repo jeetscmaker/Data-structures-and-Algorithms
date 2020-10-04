@@ -1,5 +1,7 @@
 package stack;
 
+import java.util.EmptyStackException;
+
 /**
  * Dynamic array based implementation of Stack data structure.
  */
@@ -55,6 +57,12 @@ public class Stack2 {
 		stackRep[top--] = Integer.MIN_VALUE;
 		shrink();
 		return data;
+	}
+
+	public int peek() {
+		if (isEmpty())
+			throw new EmptyStackException();
+		return stackRep[top];
 	}
 
 	// Shrink the array to 1/2 if more than 3/4 array is empty.
