@@ -2,6 +2,8 @@ package queue;
 
 /**
  * Queue data structure using arrays.
+ *
+ * @author Jitendra
  */
 public class Queue {
     int front, rear, size;
@@ -15,19 +17,19 @@ public class Queue {
         array = new int[this.capacity];
     }
 
-    // Queue is full when size becomes
-    // equal to the capacity
+    /* Queue is full when size becomes
+     equal to the capacity*/
     boolean isFull(Queue queue) {
         return (queue.size == queue.capacity);
     }
 
-    // Queue is empty when size is 0
+    /* Queue is empty when size is 0*/
     boolean isEmpty(Queue queue) {
         return (queue.size == 0);
     }
 
-    // Method to add an item to the queue.
-    // It changes rear and size
+    /*Method to add an item to the queue.
+    It changes rear and size*/
     void enqueue(int item) {
         if (isFull(this))
             return;
@@ -39,8 +41,8 @@ public class Queue {
                 + " enqueued to queue");
     }
 
-    // Method to remove an item from queue.
-    // It changes front and size
+    /*Method to remove an item from queue.
+    It changes front and size*/
     int dequeue() {
         if (isEmpty(this))
             return Integer.MIN_VALUE;
@@ -52,7 +54,7 @@ public class Queue {
         return item;
     }
 
-    // Method to get front of queue
+    /*Method to get front of queue*/
     int front() {
         if (isEmpty(this))
             return Integer.MIN_VALUE;
@@ -60,7 +62,7 @@ public class Queue {
         return this.array[this.front];
     }
 
-    // Method to get rear of queue
+    /*Method to get rear of queue*/
     int rear() {
         if (isEmpty(this))
             return Integer.MIN_VALUE;
