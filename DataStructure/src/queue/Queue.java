@@ -24,13 +24,13 @@ public class Queue {
     }
 
     /* Queue is empty when size is 0*/
-    boolean isEmpty(Queue queue) {
+    public boolean isEmpty(Queue queue) {
         return (queue.size == 0);
     }
 
     /*Method to add an item to the queue.
     It changes rear and size*/
-    void enqueue(int item) {
+    public void enqueue(int item) {
         if (isFull(this))
             return;
         this.rear = (this.rear + 1)
@@ -43,7 +43,7 @@ public class Queue {
 
     /*Method to remove an item from queue.
     It changes front and size*/
-    int dequeue() {
+    public int dequeue() {
         if (isEmpty(this))
             return Integer.MIN_VALUE;
 
