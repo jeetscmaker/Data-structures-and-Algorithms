@@ -11,7 +11,7 @@ public class BinaryTreeTraversal {
     public void preorder(BinaryTreeNode root) {
         if (root == null)
             return;
-        System.out.println(root.data);
+        System.out.print(root.data + " ");
         preorder(root.left);
         preorder(root.right);
     }
@@ -21,7 +21,7 @@ public class BinaryTreeTraversal {
         if (root == null)
             return;
         preorder(root.left);
-        System.out.println(root.data);
+        System.out.print(root.data + " ");
         preorder(root.right);
     }
 
@@ -31,6 +31,6 @@ public class BinaryTreeTraversal {
             return;
         preorder(root.left);
         preorder(root.right);
-        System.out.println(root.data);
+        System.out.print(root.data + " ");
     }
 }
