@@ -22,5 +22,7 @@ public class TestTree {
         btt.inorder(A);
         System.out.println("\n =============================");
         btt.postorder(A);
+        System.out.println("\n =============================");
+        btt.levelOrder(A);
     }
 }

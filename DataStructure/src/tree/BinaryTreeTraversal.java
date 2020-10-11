@@ -1,5 +1,9 @@
 package tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * This class consists of binary tree traversal algorithms such as
  * preorder, inorder, postorder traversals to name a few.
@@ -32,5 +36,26 @@ public class BinaryTreeTraversal {
         preorder(root.left);
         preorder(root.right);
         System.out.print(root.data + " ");
+    }
+
+    /* Level Order Traversal of the binary tree. */
+    public void levelOrder(BinaryTreeNode root){
+        if (root == null)
+            return;
+        Queue<BinaryTreeNode> q = new LinkedList<>();
+        q.add(root);
+        Stack<BinaryTreeNode> s = new Stack<>();
+        while(!q.isEmpty()){
+            BinaryTreeNode temp = q.poll();
+            System.out.print(temp.getData() + " ");
+            if (temp.right != null)
+                s.push(temp.right);
+            if (temp.left != null)
+                s.push(temp.left);
+            while(!s.isEmpty()){
+                q.add(s.pop());
+            }
+        }
+        System.out.println("\n Level Order traversal complete.");
     }
 }
