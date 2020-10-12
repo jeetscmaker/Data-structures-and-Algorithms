@@ -67,4 +67,17 @@ public class BinaryTreeTraversal {
         int rightHeight = height(root.right);
         return rightHeight > leftHeight ? rightHeight + 1 : leftHeight + 1;
     }
+
+    /** Find the diameter of a tree.
+     * The diameter of a tree is the longest path between any two leaf nodes.
+     * */
+    public int diameterOfTree(BinaryTreeNode root){
+        int left, right;
+        if (root == null){
+            return 0;
+        }
+        left = diameterOfTree(root.left);
+        right = diameterOfTree(root.right);
+        return left + right + 1;
+    }
 }
