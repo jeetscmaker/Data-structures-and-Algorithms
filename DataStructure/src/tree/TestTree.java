@@ -25,5 +25,6 @@ public class TestTree {
         System.out.println("\n =============================");
         btt.levelOrder(A);
         System.out.println("Height of the tree with root node A is " + btt.height(A));
+        System.out.println("The diameter of tree is " + btt.diameterOfTree(A));
     }
 }
