@@ -1,4 +1,4 @@
-package org.jk;
+package tree;
 /**
 * Fundamental data structure for n-ary tree.
 * 
