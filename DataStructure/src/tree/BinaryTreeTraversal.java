@@ -85,4 +85,20 @@ public class BinaryTreeTraversal {
                 + findSum(root.getFirstChild())
                 + findSum(root.getNextSibling());
     }
+
+    /* Given two n-ary trees. Find whether the two are isomorphic or not.*/
+
+    /**
+     * Two trees are called isomorphic if both have identical structure. The
+     * values of individual nodes can be different but the structure should be identical.
+     */
+    public int isomorphicTree(TreeNode root1, TreeNode root2) {
+        if (root1 == null && root2 == null)
+            return 1;
+        if ((root1 == null && root2 != null) || (root1 != null && root2 == null))
+            return 0;
+        return isomorphicTree(root1.getFirstChild(), root2.getFirstChild())
+                &
+                isomorphicTree(root1.getNextSibling(), root2.getNextSibling());
+    }
 }
