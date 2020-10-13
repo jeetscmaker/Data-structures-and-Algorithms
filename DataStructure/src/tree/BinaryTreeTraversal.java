@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import TreeNode;
-
 /**
  * This class consists of binary tree traversal algorithms such as
  * preorder, inorder, postorder traversals to name a few.
@@ -70,19 +68,21 @@ public class BinaryTreeTraversal {
         return rightHeight > leftHeight ? rightHeight + 1 : leftHeight + 1;
     }
 
-    /** Find the diameter of a tree.
+    /**
+     * Find the diameter of a tree.
      * The diameter of a tree is the longest path between any two leaf nodes.
-     * */
-    public int diameterOfTree(BinaryTreeNode root){
+     */
+    public int diameterOfTree(BinaryTreeNode root) {
         //TODO
         return 0;
     }
-  /* Find the sum of all the elements of n-ary tree */
-  public int findSum(TreeNode root){
-    if (root == null) 
-        return 0;
-    return root.getData()
-          + findSum(root.getFirstChild())
-          + findSum(root.nextSibling());
-  }
+
+    /* Find the sum of all the elements of n-ary tree */
+    public int findSum(TreeNode root) {
+        if (root == null)
+            return 0;
+        return root.getData()
+                + findSum(root.getFirstChild())
+                + findSum(root.getNextSibling());
+    }
 }
