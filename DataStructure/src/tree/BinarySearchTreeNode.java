@@ -55,4 +55,19 @@ public class BinarySearchTreeNode{
 	  }
 	  return null;
 	}
+	/* Find the maximum element in BST.*/
+	public BinarySearchTreeNode findMax(BinarySearchTreeNode root){
+	  if (root == null) return null;
+	  while (root.getRight() != null)
+	    root = root.getRight();
+	  return root;
+	}
+	
+	/* Find the minimum element in BST.*/
+	public BinarySearchTreeNode findMin(BinarySearchTreeNode root){
+	  if (root == null) return null;
+	  while (root.getLeft() != null)
+	    root = root.getLeft();
+	  return root;
+	}
 }
