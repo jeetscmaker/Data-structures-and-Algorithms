@@ -33,4 +33,26 @@ public class BinarySearchTreeNode{
 	public void setRight(BinarySearchTreeNode right){
 		this.right = right;
 	}
+	/*Finding an element in BST using recursion. */
+	public BinarySearchTreeNode find(BinarySearchTreeNode root, int data){
+	  if (root == null) return null;
+	  if (root.getData() == data) 
+	    return root;
+	  else if (root.getData() > data) 
+	    return find(root.getLeft(), data);
+	  else if(root.getData() < data)
+	    return find(root.getRight(), data);
+	  return null;
+	}
+	
+	/*Find an element in BST using iterative method*/
+	public BinarySearchTreeNode find_iter(BinarySearchTreeNode root, int data){
+	  if(root == null) return null;
+	  while(root != null){
+	    if(root.getData() == data) return root;
+	    if (root.getData() > data) root = root.getLeft();
+	    else root = root.getRight();
+	  }
+	  return null;
+	}
 }
