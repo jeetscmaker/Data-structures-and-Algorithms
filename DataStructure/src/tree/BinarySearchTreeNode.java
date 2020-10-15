@@ -2,13 +2,22 @@ package tree;
 
 /**
  * @author Jitendra
- *
+ * <p>
  * The fundamental data structure for a binary search tree.
  */
 public class BinarySearchTreeNode {
     private int data;
     private BinarySearchTreeNode left;
     private BinarySearchTreeNode right;
+
+    public BinarySearchTreeNode() {
+    }
+
+    public BinarySearchTreeNode(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
 
     public int getData() {
         return data;
@@ -70,6 +79,20 @@ public class BinarySearchTreeNode {
         if (root == null) return null;
         while (root.getLeft() != null)
             root = root.getLeft();
+        return root;
+    }
+
+    /* Insert an element in a BST. */
+    public BinarySearchTreeNode insert(BinarySearchTreeNode root, int data) {
+        if (root == null)
+            return new BinarySearchTreeNode(data);
+        else {
+            if (data < root.getData()) {
+                root.setLeft(insert(root.getLeft(), data));
+            } else if (data > root.getData()) {
+                root.setRight(insert(root.getRight(), data));
+            }
+        }
         return root;
     }
 }
