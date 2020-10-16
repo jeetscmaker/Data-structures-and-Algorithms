@@ -95,4 +95,30 @@ public class BinarySearchTreeNode {
         }
         return root;
     }
+	/* Delete a given node from the BST.*/
+	public BinarySearchTreeNode delete (BinarySearchTreeNode root, int data){
+	  BinarySearchTreeNode temp;
+	  if (root == null)
+	      System.out.println("Empty tree!")
+	  else if(root.data > data)
+	    root.setLeft(delete(root.getLeft(), data));
+    else if(root.data < data)
+	    root.setRight(delete(root.getRight(), data));
+	  else{
+	    if (root.getLeft() != null && root.getRight() != null) {
+	      temp = findMax(root.getLeft());
+	      root.setData(temp.getData());
+	      root.setLeft(delete(root.getLeft(), root.getData()));
+	    }
+	    else{
+	      temp = root;
+	      if(root.getLeft() == null)
+	        root = root.getRight();
+	      if(root.getRight() == null)
+	        root = root.getLeft();
+	      temp = null;
+	    }
+	  }
+	 return root; 
+	}
 }
