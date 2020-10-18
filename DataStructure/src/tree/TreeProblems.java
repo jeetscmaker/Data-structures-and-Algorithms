@@ -26,7 +26,7 @@ public class TreeProblems{
    public static BinarySearchTreeNode lca(BinarySearchTreeNode root, BinarySearchTreeNode a, BinarySearchTreeNode b){
      if(root == null) return null;
      if(root == a || root == b) return root;
-     if(Math.max(a.data, b.data) < root data)
+     if(Math.max(a.data, b.data) < root.data)
         return lca(root.left, a, b);
      else if(Math.min(a.data, b.data) > root.data)
         return lca(root.right, a, b);
