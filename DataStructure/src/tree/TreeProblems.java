@@ -36,4 +36,13 @@ public class TreeProblems {
         else
             return root;
     }
+
+   /*Check if a given binary tree is a BST. */
+   public static boolean isBST(BinarySearchTreeNode root, int min, int max) {
+     if(root == null)
+        return true;
+     if(root.getData() < min || root.getData() > max)
+        return false;
+     return (isBST(root.getLeft(), min, root.getData()) && isBST(root.getRight(), root.getData(), max));
+   }
 }
