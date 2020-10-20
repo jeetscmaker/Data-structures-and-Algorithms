@@ -2,7 +2,8 @@ package tree;
 
 public class TreePathSum {
 
-    /**
+    /** @author Jitendra
+     *
      * Give an algorithm for checking the existence of path win given sum.
      * For this problem, the strategy is subtract the mode value from
      * The Sum before calling its children recur And chief at the
