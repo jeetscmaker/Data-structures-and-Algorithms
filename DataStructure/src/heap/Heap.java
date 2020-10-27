@@ -29,9 +29,25 @@ public class Heap {
     }
 
     /* Getting the maximum element. */
-    public int getMax(){
+    public int getMax() {
         if (this.count == 0)
             return -1;
         return this.array[0];
+    }
+
+    /* Children of a node. */
+    public int leftChild(int i) {
+        int left = 2 * i + 1;
+        if (left >= this.count)
+            return -1;
+        return left;
+    }
+
+    /* Children of a node. */
+    public int rightChild(int i) {
+        int right = 2 * i + 2;
+        if (right >= this.count)
+            return -1;
+        return right;
     }
 }
