@@ -52,8 +52,8 @@ public class Heap {
     }
 
     /* Heapifying the element at location i.
-    * This operation is also called PercolateDown. */
-    public void percolateDown(int i){
+     * This operation is also called PercolateDown. */
+    public void percolateDown(int i) {
         int l, r, maxIndex, temp;
         l = leftChild(i);
         r = rightChild(i);
@@ -63,11 +63,27 @@ public class Heap {
             maxIndex = i;
         if (r != -1 && this.array[i] < this.array[r])
             maxIndex = r;
-        if (maxIndex != i){
-           temp = this.array[i];
-           this.array[i] = this.array[maxIndex];
-           this.array[maxIndex] = temp;
+        if (maxIndex != i) {
+            temp = this.array[i];
+            this.array[i] = this.array[maxIndex];
+            this.array[maxIndex] = temp;
         }
         percolateDown(maxIndex);
+    }
+
+    /**
+     * Deleting an element from heap. We just need to delete the element from root.
+     * i. copy the first element into some variable,
+     * ii. copy the last element into first element's location,
+     * iii. percolate down the first element.
+     */
+    public int deleteMax() {
+        if (this.count == 0)
+            return -1;
+        int data = this.array[0];
+        this.array[0] = this.array[count - 1];
+        this.count--;
+        percolateDown(0);
+        return data;
     }
 }
