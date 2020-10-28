@@ -86,4 +86,47 @@ public class Heap {
         percolateDown(0);
         return data;
     }
+
+    /**
+     * Inserting an element in a heap.
+     * i. increase the heap size,
+     * ii. keep the new element at the end of the heap,
+     * iii. heapify the element from bottom to top.
+     */
+    public void insert(int data) {
+        int temp;
+        if (this.count == this.capacity)
+            resizeHeap();
+        this.count++;
+        int i = this.count - 1;
+        while (i >= 0 && data > this.array[(i - 1) / 2]) {
+            temp = this.array[i];
+            this.array[i] = this.array[(i - 1) / 2];
+            this.array[(i - 1) / 2] = temp;
+            i = (i - 1) / 2;
+        }
+        this.array[i] = data;
+    }
+
+    /* Resize the array if full. */
+    private void resizeHeap() {
+        int[] arr_old = new int[capacity];
+        System.arraycopy(array, 0, arr_old, count - 1, count);
+        array = new int[capacity * 2];
+        if (array == null) {
+            System.out.println("Memory error!");
+            return;
+        }
+        for (int i = 0; i < this.capacity; i++) {
+            array[i] = arr_old[i];
+        }
+        capacity = capacity * 2;
+        arr_old = null;
+    }
+
+    /* Destroying the heap. */
+    public void destroyHeap() {
+        count = 0;
+        array = null;
+    }
 }
