@@ -50,4 +50,24 @@ public class Heap {
             return -1;
         return right;
     }
+
+    /* Heapifying the element at location i.
+    * This operation is also called PercolateDown. */
+    public void percolateDown(int i){
+        int l, r, maxIndex, temp;
+        l = leftChild(i);
+        r = rightChild(i);
+        if (l != -1 && this.array[i] < this.array[l])
+            maxIndex = l;
+        else
+            maxIndex = i;
+        if (r != -1 && this.array[i] < this.array[r])
+            maxIndex = r;
+        if (maxIndex != i){
+           temp = this.array[i];
+           this.array[i] = this.array[maxIndex];
+           this.array[maxIndex] = temp;
+        }
+        percolateDown(maxIndex);
+    }
 }
