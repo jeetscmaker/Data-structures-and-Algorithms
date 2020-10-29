@@ -129,4 +129,21 @@ public class Heap {
         count = 0;
         array = null;
     }
+
+    /* Build a heap or heapify an array. */
+    public void buildHeap(Heap h, int[] a, int n) {
+        if (h == null)
+            return;
+        while (n > h.capacity)
+            h.resizeHeap();
+        for (int i = 0; i < n; i++) {
+            h.array[i] = a[i];
+        }
+        h.count = n;
+        // heapify all the nodes except leaf nodes.
+        // so start with (n-1)/2 indexed node and continue for lower indexed nodes.
+        for (int i = (n - 1) / 2; i > 0; i--) {
+            h.percolateDown(i);
+        }
+    }
 }
