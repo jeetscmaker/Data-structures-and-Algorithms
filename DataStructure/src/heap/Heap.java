@@ -61,7 +61,7 @@ public class Heap {
             maxIndex = l;
         else
             maxIndex = i;
-        if (r != -1 && this.array[i] < this.array[r])
+        if (r != -1 && this.array[maxIndex] < this.array[r])
             maxIndex = r;
         if (maxIndex != i) {
             temp = this.array[i];
