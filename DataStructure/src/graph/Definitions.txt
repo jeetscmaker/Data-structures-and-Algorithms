@@ -18,4 +18,13 @@
     contains both of them.
 => DAG: Directed Acyclic Graph.
 => A forest is a set of disjoint trees.
+=> A 'Spanning Tree' of a connected graph is a subgraph that contains all of the
+    vertices of the graph and is a single tree.
+=> A 'Bipartite graph' is a graph in which we can divide the vertices in two sets
+    such that all edges connect a vertex in one set with a vertex in another set.
+=> A 'weighted' graph contains the numbers on the edges of it.
+=> The number of vertices in a graph is denoted by |V|.
+=> The number of edges in a graph is denoted by |E|.
+=> |E| can lie between 0 to |V|*(|V|-1)/2.
+=> A graph with all the edges present is called 'Complete graph'.
 
