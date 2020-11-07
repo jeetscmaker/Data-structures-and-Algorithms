@@ -30,3 +30,9 @@
 => Graph with relatively low edges is called 'sparse graph'.
 => Directed weighted graphs are sometimes called Networks.
 
+--- Applications of Graphs ---
+-> Representing relationships between components in electric circuits.
+-> Transportation networks: Highways, flights
+-> Computer networks: LAN, Internet, Web.
+-> Databases: For representing ER diagram,dependency of tables etc.
+
