@@ -27,4 +27,6 @@
 => The number of edges in a graph is denoted by |E|.
 => |E| can lie between 0 to |V|*(|V|-1)/2.
 => A graph with all the edges present is called 'Complete graph'.
+=> Graph with relatively low edges is called 'sparse graph'.
+=> Directed weighted graphs are sometimes called Networks.
 
