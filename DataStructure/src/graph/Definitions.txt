@@ -9,3 +9,13 @@
 => A graph with no cycles is called a 'Tree'.
 => A 'Cycle' in a graph is a loop in which the starting and ending vertex is the same.
 => A graph is called connected, if there is a path from every vertex to every other vertex.
+=> A tree is an 'acyclic' connected graph.
+=> A self loop is an edge that connects a vertex to itself.
+=> Two edged are 'Parallel' when they connect the same pair of vertices.
+=> The 'Degree' of a vertex is defined as the number of edges incident to it.
+=> A subgraph is a subset of a graph.
+=> A vertex is called 'connected' to another vertex when there is a path which
+    contains both of them.
+=> DAG: Directed Acyclic Graph.
+=> A forest is a set of disjoint trees.
+
