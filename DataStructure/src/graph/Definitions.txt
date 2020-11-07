@@ -1,0 +1,11 @@
+=> A Graph is a pair(V,E) where V is a set of nodes and E is a collection of pairs
+    of vertices.
+    Example: V = {a, b, c, d}, E = {(a,b),(b,c),(c,d),(d,a),(a,c)}.
+    each pair of vertices is called an 'edge' of the graph.
+=> Undirected graph: In this type of graph, the edges are without direction. So edge
+    (a,b) and edge (b,a) are same in an undirected graph.
+=> Directed graph: In this type of graph, the edges have directions. So edge (a,b) and
+    edge (b,a) are not same in a directed graph.
+=> A graph with no cycles is called a 'Tree'.
+=> A 'Cycle' in a graph is a loop in which the starting and ending vertex is the same.
+=> A graph is called connected, if there is a path from every vertex to every other vertex.
