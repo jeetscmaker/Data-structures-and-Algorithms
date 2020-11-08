@@ -3,7 +3,6 @@ package graph;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.concurrent.ArrayBlockingQueue;
 
 public class Graph {
     private final int maxVertices = 20;
@@ -13,7 +12,7 @@ public class Graph {
     private Stack stack; // for DFS
     private Queue queue; // for BFS
 
-    public Graph(){
+    public Graph() {
         vertexList = new Vertex[maxVertices];
         vertexCount = 0;
         stack = new Stack();
@@ -25,11 +24,11 @@ public class Graph {
         }
     }
 
-    public void dfs(){
+    public void dfs() {
         //TODO
     }
 
-    public void bfs(){
+    public void bfs() {
         //TODO
     }
 }
