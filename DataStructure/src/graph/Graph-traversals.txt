@@ -11,3 +11,10 @@ node, and proceed for its next adjacent node. We continue this operation till th
 backtracking takes back to the starting node.
 Sometimes an edge leads to an already discovered node, this edge is called a back edge.
 When back edges are removed, we get tree edges.
+
+BFS(Breadth First Search):-
+---------------------------
+Queue data structure is used for BFS purpose. In this approach of graph traversal, we
+cover all the nodes at one given level, then we move to another level. It is similar
+to level order traversal of trees. the visited nodes are kept in the queue. While processing
+a node, we dequeue the node from queue. This process is continued until queue is empty.
