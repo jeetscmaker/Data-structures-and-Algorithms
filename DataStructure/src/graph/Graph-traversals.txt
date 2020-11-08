@@ -1,0 +1,13 @@
+Graph traversal algorithms are also called graph search algorithms.
+
+DFS(Depth First Search):-
+------------------------
+In the beginning all the nodes are unvisited. When a node is visited it becomes
+a grey node. isVisited is a boolean variable which keeps track of every node.
+Stack data structure is used for DFS. In a DFS, we start from a given node 'u'.
+Then we traverse  depth of u until we find a 'dead-end'. Dead-end means when there
+is no further adjacent node to proceed. At the dead-end, we backtrack to the previous
+node, and proceed for its next adjacent node. We continue this operation till the
+backtracking takes back to the starting node.
+Sometimes an edge leads to an already discovered node, this edge is called a back edge.
+When back edges are removed, we get tree edges.
