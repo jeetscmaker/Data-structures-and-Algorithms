@@ -40,10 +40,8 @@ public class Graph {
                 stack.push(v);
             }
         }
-        // reset the flags
-        for (int i = 0; i < vertexList.length; i++) {
-            vertexList[i].visited = false;
-        }
+        // reset the flags of vertices
+        resetTheFlags();
     }
 
     private int getAdjUnvisitedVertex(int v) {
@@ -56,7 +54,27 @@ public class Graph {
 
     /* Breadth first search algorithm */
     public void bfs() {
-        //TODO
+        vertexList[0].visited = true;
+        displayVertex(vertexList[0].label);
+        queue.add(0);
+        int v2;
+        while (!queue.isEmpty()) {
+            int v = queue.remove();
+            // visiting all the adjacent unvisited vertices of v and adding to queue.
+            while ((v2 = getAdjUnvisitedVertex(v)) != -1) {
+                vertexList[v2].visited = true;
+                displayVertex(v2);
+                queue.add(v2);
+            }
+        }
+        // reset the flags of vertices
+        resetTheFlags();
+    }
+
+    private void resetTheFlags() {
+        for (int i = 0; i < vertexList.length; i++) {
+            vertexList[i].visited = false;
+        }
     }
 
     public void addVertex(char label) {
