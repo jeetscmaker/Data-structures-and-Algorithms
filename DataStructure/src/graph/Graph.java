@@ -23,13 +23,28 @@ public class Graph {
             }
         }
     }
-
+    /* Depth first search algorithm */
     public void dfs() {
         //TODO
     }
 
+    /* Breadth first search algorithm */
     public void bfs() {
         //TODO
+    }
+
+    public void addVertex(char label){
+        vertexList[vertexCount++] = new Vertex(label);
+    }
+
+    public void addEdge(int i, int j, boolean isDirectedEdge){
+        adjMatrix[i][j] = 1;
+        if (isDirectedEdge)
+            adjMatrix[j][i] = 1;
+    }
+
+    public void displayVertex(int v){
+        System.out.println(vertexList[v].label);
     }
 }
 
