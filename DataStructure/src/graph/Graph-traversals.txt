@@ -54,3 +54,9 @@ Kahn's algorithm for topological sort:
     All vertices with indegree 0 are placed in the queue. While the queue is not empty,
     a vertex v is removed from the queue and all edges adjacent to v have their indegree
     decremented. A vertex is put in queue as soon as its indegree becomes 0.
+Applications of Topological sorting:-
+    - Representing course prerequisites
+    - In detecting deadlock
+    - pipeline of computing jobs
+    - checking for symbolic link loop.
+    - Evaluating formulae in spreadsheet.
