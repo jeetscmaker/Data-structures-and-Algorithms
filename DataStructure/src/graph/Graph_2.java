@@ -9,28 +9,51 @@ import java.util.ArrayList;
  */
 
 public class Graph_2 {
+    private int numVertices;
+    private ArrayList<ArrayList<Integer>> adjLists;
+
+    public Graph_2(int numVertices) {
+        this.numVertices = numVertices;
+        adjLists = new ArrayList<>(numVertices);
+    }
+
+    public ArrayList<ArrayList<Integer>> getAdjLists() {
+        return adjLists;
+    }
+
+    public int getNumVertices() {
+        return numVertices;
+    }
+
+    public void setAdjLists(ArrayList<ArrayList<Integer>> adjLists) {
+        this.adjLists = adjLists;
+    }
+
+    public void setNumVertices(int numVertices) {
+        this.numVertices = numVertices;
+    }
+
     // Add edge
-    static void addEdge(ArrayList<ArrayList<Integer>> am, int s, int d) {
-        am.get(s).add(d);
-        am.get(d).add(s);
+    public void addEdge(int s, int d) {
+        adjLists.get(s).add(d);
+        adjLists.get(d).add(s);
     }
 
     public static void main(String[] args) {
 
         // Create the graph
         int V = 5;
-        ArrayList<ArrayList<Integer>> am = new ArrayList<>(V);
-
+        Graph_2 graph = new Graph_2(V);
         for (int i = 0; i < V; i++)
-            am.add(new ArrayList<>());
+            graph.getAdjLists().add(new ArrayList<>());
 
         // Add edges
-        addEdge(am, 0, 1);
-        addEdge(am, 0, 2);
-        addEdge(am, 0, 3);
-        addEdge(am, 1, 2);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 3);
+        graph.addEdge(1, 2);
 
-        printGraph(am);
+        printGraph(graph.getAdjLists());
     }
 
     // Print the graph
