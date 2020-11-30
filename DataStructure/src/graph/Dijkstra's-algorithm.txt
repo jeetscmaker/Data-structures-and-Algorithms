@@ -20,3 +20,8 @@ Algorithm
     values, iterate through all adjacent vertices. For every adjacent vertex v, if sum
     of distance value of u (from source) and weight of edge u-v, is less than the distance
     value of v, then update the distance value of v.
+
+- Dijkstra's algorithm does not work for graphs with negative edges.
+- Time complexity of adjacency list implementation is O(V+E), where
+  V is number of vertices and E is number of edges.
+
