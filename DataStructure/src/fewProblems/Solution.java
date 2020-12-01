@@ -5,6 +5,8 @@ package fewProblems;
  * thrice in a row. e.g. aaab, abbba such strings are not allowed; Because a has been
  * repeated thrice in 1st string and b has been repeated thrice in 2nd string.
  * The better solution wii be: aaba and ababb etc.
+ *
+ * Given: A <= 2*(B+1) and vice versa.
  */
 public class Solution {
     public static void main(String[] args) {
