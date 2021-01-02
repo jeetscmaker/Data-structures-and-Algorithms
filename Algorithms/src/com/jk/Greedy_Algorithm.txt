@@ -2,3 +2,22 @@ Greedy Algorithm
 -------------------
 It is an algorithmic paradigm that follows the problem solving approach of making the local
 optimal choice at each stage with the hope of finding a global optimal.
+
+Pros of Greedy Algorithm:
+    It is simple, easy to implement and runs fast.
+
+Cons of Greedy Algorithm:
+    It doesn't provide the Global optimal solution very often.
+
+When to use?
+------------
+Look for these two properties:
+    - A global optimum can be arrived at by selecting a local minimum.
+    - An optimal solution to the problem contains an optimal solution
+        to the sub-problems.
+Applications where we can use G.A.
+    - Activity selection problem
+    - Huffman Coding
+    - Job sequencing problem
+    - Fractional Knapsack problem
+    - Prim's minimum spanning tree.
