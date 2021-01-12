@@ -15,7 +15,7 @@ public class Factorial {
     private static int[] fib;
 
     public static void main(String[] args) {
-        /*Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         fib = new int[n + 1];
         fib[0] = fib[1] = 1;
@@ -23,7 +23,7 @@ public class Factorial {
             fib[i] = i * fib[i - 1];
         }
         System.out.println("Factorial of " + n + " is " + fib[n]);
-        sc.close();*/
+        sc.close();
         RecurSum recurSum = new RecurSum();
         System.out.println(recurSum.recurSum(1));
         System.out.println(recurSum.recurSum(2));
