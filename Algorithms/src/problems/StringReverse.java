@@ -13,7 +13,7 @@ public class StringReverse {
         if (input.length() == 0)
             return "";
         else
-            return input.charAt(input.length()-1) + reverse(input.substring(0, input.length()-1));
+            return input.charAt(input.length() - 1) + reverse(input.substring(0, input.length() - 1));
     }
 
     // Using StringBuilder.
@@ -23,9 +23,9 @@ public class StringReverse {
     }
 
     // Using normal logic
-    public static String reverse3(String input){
+    public static String reverse3(String input) {
         String reversed = "";
-        for (int i = input.length()-1; i >=0 ; i--) {
+        for (int i = input.length() - 1; i >= 0; i--) {
             reversed = reversed + input.charAt(i);
         }
         return reversed;
