@@ -10,10 +10,8 @@ public class StringReverse {
 
     // Using recursion.
     private static String reverse(String input) {
-        if (input == "")
+        if (input.length() == 0)
             return "";
-        else if(input.length() == 1)
-            return String.valueOf(input.charAt(0));
         else
             return input.charAt(input.length()-1) + reverse(input.substring(0, input.length()-1));
     }
@@ -24,6 +22,7 @@ public class StringReverse {
         return sb.reverse().toString();
     }
 
+    // Using normal logic
     public static String reverse3(String input){
         String reversed = "";
         for (int i = input.length()-1; i >=0 ; i--) {
