@@ -15,4 +15,10 @@ public class StringReverse {
         else
             return input.charAt(input.length()-1) + reverse(input.substring(0, input.length()-1));
     }
+
+    // Using StringBuilder.
+    public String reverse2(String input) {
+        StringBuilder sb = new StringBuilder(input);
+        return sb.reverse().toString();
+    }
 }
