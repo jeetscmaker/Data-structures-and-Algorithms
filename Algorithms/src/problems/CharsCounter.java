@@ -1,6 +1,6 @@
 package problems;
 
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -14,9 +14,10 @@ public class CharsCounter {
     public static void main(String[] args) {
         String input = "aaaabbbcca";
         method1(input);
+        method2(input);
     }
 
-    static void method1(String input){
+    private static void method1(String input){
         Pattern r =  Pattern.compile("(.)\\1*");
         Matcher m = r.matcher(input);
 
@@ -27,7 +28,21 @@ public class CharsCounter {
         System.out.println(finalResult);
     }
 
-    static void method2(){
-
+    private static void method2(String input){
+        List<String> list = new ArrayList<>();
+        int count = 1, startIndex = 0, n = input.length();
+        for (int i = 0; i < n - 1; i++) {
+            if (input.charAt(i) == input.charAt(i+1))
+                count++;
+            else{
+                list.add("(\"" + String.valueOf(input.charAt(startIndex)) + "\"," + count + ")");
+                startIndex = i+1;
+                count = 1;
+                if (i+1 == n-1){
+                    list.add("(\"" + String.valueOf(input.charAt(startIndex)) + "\"," + count + ")");
+                }
+            }
+        }
+        System.out.println(list);
     }
 }
