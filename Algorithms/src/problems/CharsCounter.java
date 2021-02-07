@@ -35,11 +35,11 @@ public class CharsCounter {
             if (input.charAt(i) == input.charAt(i + 1))
                 count++;
             else {
-                list.add("(\"" + String.valueOf(input.charAt(startIndex)) + "\"," + count + ")");
+                list.add("(\"" + input.charAt(startIndex) + "\"," + count + ")");
                 startIndex = i + 1;
                 count = 1;
                 if (i + 1 == n - 1) {
-                    list.add("(\"" + String.valueOf(input.charAt(startIndex)) + "\"," + count + ")");
+                    list.add("(\"" + input.charAt(startIndex) + "\"," + count + ")");
                 }
             }
         }
