@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Input: aaaabbbcca
  * Output: [("a",4), ("b",3), ("c",2), ("a",1)]
- * */
+ */
 
 public class CharsCounter {
     public static void main(String[] args) {
@@ -17,8 +17,8 @@ public class CharsCounter {
         method2(input);
     }
 
-    private static void method1(String input){
-        Pattern r =  Pattern.compile("(.)\\1*");
+    private static void method1(String input) {
+        Pattern r = Pattern.compile("(.)\\1*");
         Matcher m = r.matcher(input);
 
         var finalResult = m.results()
@@ -28,17 +28,17 @@ public class CharsCounter {
         System.out.println(finalResult);
     }
 
-    private static void method2(String input){
+    private static void method2(String input) {
         List<String> list = new ArrayList<>();
         int count = 1, startIndex = 0, n = input.length();
         for (int i = 0; i < n - 1; i++) {
-            if (input.charAt(i) == input.charAt(i+1))
+            if (input.charAt(i) == input.charAt(i + 1))
                 count++;
-            else{
+            else {
                 list.add("(\"" + String.valueOf(input.charAt(startIndex)) + "\"," + count + ")");
-                startIndex = i+1;
+                startIndex = i + 1;
                 count = 1;
-                if (i+1 == n-1){
+                if (i + 1 == n - 1) {
                     list.add("(\"" + String.valueOf(input.charAt(startIndex)) + "\"," + count + ")");
                 }
             }
