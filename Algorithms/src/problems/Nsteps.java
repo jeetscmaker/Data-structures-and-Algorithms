@@ -11,7 +11,8 @@ package problems;
 
 public class Nsteps {
     public static void main(String[] args) {
-        System.out.println(calNumberOfWays_recursion(5));
+        System.out.println(calNumberOfWays_recursion(6));
+        System.out.println(calNumberOfWays_dp(6));
     }
 // Similar to fibonacci series recursion.
     public static int calNumberOfWays_recursion(int n){
@@ -20,5 +21,20 @@ public class Nsteps {
         if(n==2)
             return 2;
         else return calNumberOfWays_recursion(n-1) + calNumberOfWays_recursion(n-2);
+    }
+
+    public static int calNumberOfWays_dp(int n){
+        int x = 1, y = 2, z = 0;
+        if (n == 1)
+            return 1;
+        if (n == 2)
+            return 2;
+
+        for (int i = 2; i < n; i++) {
+            z = x+y;
+            x = y;
+            y = z;
+        }
+        return z;
     }
 }
