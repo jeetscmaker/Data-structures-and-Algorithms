@@ -29,7 +29,7 @@ public class A {
         System.out.println("Printing all the names for which Id is less than 15: >>>>>>>>");
         List<String> namesList = boyList.stream()
                 .filter(b -> b.getId() < 15)
-                .map(boy -> boy.getName())
+                .map(Boy::getName)
                 .collect(Collectors.toList());
         namesList.forEach(System.out::println);
     }
