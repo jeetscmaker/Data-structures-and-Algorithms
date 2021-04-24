@@ -32,6 +32,28 @@ public class A {
                 .map(Boy::getName)
                 .collect(Collectors.toList());
         namesList.forEach(System.out::println);
+
+        // Input: [10, 3, 7, 9, 6, 1, 8]
+        // print elements having at least 2 numbers greater than them.
+        // Output: 3, 7, 6, 1, 8
+        // Find the largest number and the second largest number in the array
+        // remaining elements will be the desired set of numbers.
+        int[] x = {10, 3, 7, 9, 6, 1, 8};
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+        for (int i = 0; i < x.length; ++i) {
+            if (first < x[i]) {
+                second = first;
+                first = x[i];
+            } else if (x[i] > second && x[i] != first) {
+                second = x[i];
+            }
+        }
+        System.out.println("Max = " + first + " Second max = " + second);
+        for (int i = 0; i < x.length; i++) {
+            if (x[i] != first && x[i] != second)
+                System.out.print(x[i] + " ");
+        }
+
     }
 
     public static String reverse(String input) {
@@ -46,7 +68,7 @@ class Boy {
     private int id;
     private String name;
 
-    Boy(int id, String name){
+    Boy(int id, String name) {
         this.id = id;
         this.name = name;
     }
