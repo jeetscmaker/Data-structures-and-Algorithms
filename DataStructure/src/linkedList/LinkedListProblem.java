@@ -8,11 +8,12 @@ public class LinkedListProblem {
         ListNode l3 = new ListNode(15);
         ListNode l4 = new ListNode(25);
         ListNode l5 = new ListNode(35);
+        // Constructing the chain l1->l2->l3->l4->l5
         l1.setNext(l2);
         l2.setNext(l3);
         l3.setNext(l4);
         l4.setNext(l5);
-        // prepare the LinkedList by assigning the head.
+        // prepare the LinkedList by assigning the head of the LinkedList to l1.
         ll.setHead(l1);
         // print the linkedList before reverse().
         ll.printLinkedList();
