@@ -3,28 +3,39 @@ package tree;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Test {
 
     public static void main(String[] args) {
-        FastScanner fs = new FastScanner();
-        int T = fs.nextInt();
-        for (int tt = 0; tt < T; tt++) {
-            long x = fs.nextLong();
-            if (x % 2050 != 0) {
-                System.out.println(-1);
-                continue;
-            }
-            long times = x / 2050;
-            int ans = 0;
-            for (int i : (times + "").toCharArray()) {
-                ans += i - '0';
-            }
-            System.out.println(ans);
+        System.out.println(createPalindrome(5,2));
+    }
+
+    public static String createPalindrome(int N, int K) {
+        if (N == 1) return "a";
+        if (N == 2) return "aa";
+        if (N == 3 && K == 1) return "aaa";
+        if (N == 3 && K == 2) return "aba";
+        // otherwise form a new palindrome.
+        char[] ch = new char[26];
+        char a = 97;
+        for (int i = 0; i < 26; i++) {
+            ch[i] = a++;
         }
+        StringBuilder prefix = new StringBuilder();
+        StringBuilder suffix = new StringBuilder();
+        StringBuilder middle = new StringBuilder();
+
+        for (int i = 0; i < K; i++) {
+            prefix.append(ch[i]);
+        }
+        for (int i = 1; i <= N-2*K; i++) {
+            middle.append('a');
+        }
+        for (int i = K-1; i >= 0; i--) {
+            suffix.append(ch[i]);
+        }
+        return prefix.toString() + middle + suffix;
     }
 
     static void sort(int[] a) {
