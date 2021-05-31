@@ -1,56 +1,41 @@
 package codeforces;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * A word or a sentence in some language is called a pangram if all the characters of the alphabet of this language
- * appear in it at least once. Pangrams are often used to demonstrate fonts in printing or test the output devices.
- * <p>
- * You are given a string consisting of lowercase and uppercase Latin letters. Check whether this string is a pangram.
- * We say that the string contains a letter of the Latin alphabet if this letter occurs in the string in
- * uppercase or lowercase.
+ * Allen has a LOT of money. He has n dollars in the bank. For security reasons, he wants to withdraw it in
+ * cash (we will not disclose the reasons here). The denominations for dollar bills are 1, 5, 10, 20, 100.
+ *
+ * What is the minimum number of bills Allen could receive after withdrawing his entire balance?
  * Input
- * <p>
- * The first line contains a single integer n (1≤n≤100) — the number of characters in the string.
- * <p>
- * The second line contains the string. The string consists only of uppercase and lowercase Latin letters.
- * Output
- * <p>
- * Output "YES", if the string is a pangram and "NO" otherwise.
+ * The first and only line of input contains a single integer n
+ * (1<=n<=1000000000)).
+ * Output the minimum number of bills that Allen could receive.
  */
 
 public class Main {
+    private static int sum = 0;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n;
-        String s;
         n = sc.nextInt();
-        s = sc.next();
-        if (n < 26) {
-            System.out.println("NO");
-            return;
-        }
-        HashMap<Character, Short> map = new HashMap<>();
-        int a = 97;
-        while (a < 123) {
-            map.put((char) a, (short) 0);
-            ++a;
-        }
-        for (char c : s.toLowerCase().toCharArray()) {
-            map.put(c, (short) (map.get(c) + 1));
-        }
-        boolean containsAllAlphabets = true;
-        for (char c : map.keySet()) {
-            if (map.get(c) == 0) {
-                containsAllAlphabets = false;
-                break;
-            }
-        }
-        if (containsAllAlphabets)
-            System.out.println("YES");
-        else
-            System.out.println("NO");
+        System.out.println(fun(n));
         sc.close();
+    }
+
+    private static int fun(int n) {
+        if (n >= 100)
+            return sum = sum + (n / 100) + fun(n % 100);
+        else if (n >= 20)
+            return sum = sum + (n / 20) + fun(n % 20);
+        else if (n >= 10)
+            return sum = sum + (n / 10) + fun(n % 10);
+        else if (n >= 5)
+            return sum = sum + (n / 5) + fun(n % 5);
+        else if (n >= 1)
+            return sum = sum + n;
+        else
+            return sum;
     }
 }
