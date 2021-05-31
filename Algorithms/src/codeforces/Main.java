@@ -12,7 +12,7 @@ import java.util.Scanner;
  * (1<=n<=1000000000)).
  * Output the minimum number of bills that Allen could receive.
  */
-
+// SECOND APPROACH
 public class Main {
     private static int sum = 0;
 
@@ -20,22 +20,29 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n;
         n = sc.nextInt();
-        System.out.println(fun(n));
+        while(n>0){
+            if(n >= 100){
+                sum = sum + (n/100);
+                n = n%100;
+            }
+            if(n >= 20){
+                sum = sum + (n/20);
+                n = n%20;
+            }
+            if(n >= 10){
+                sum = sum + (n/10);
+                n = n%10;
+            }
+            if(n >= 5){
+                sum = sum + (n/5);
+                n = n%5;
+            }
+            if(n >= 1) {
+                sum = sum + n;
+                break;
+            }
+        }
+        System.out.println(sum);
         sc.close();
-    }
-
-    private static int fun(int n) {
-        if (n >= 100)
-            return sum = sum + (n / 100) + fun(n % 100);
-        else if (n >= 20)
-            return sum = sum + (n / 20) + fun(n % 20);
-        else if (n >= 10)
-            return sum = sum + (n / 10) + fun(n % 10);
-        else if (n >= 5)
-            return sum = sum + (n / 5) + fun(n % 5);
-        else if (n >= 1)
-            return sum = sum + n;
-        else
-            return sum;
     }
 }
