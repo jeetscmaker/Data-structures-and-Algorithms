@@ -11,19 +11,24 @@ public class Main {
         int a, b;
         a = sc.nextInt();
         b = sc.nextInt();
-        System.out.println("GCD is: " + gcd(a,b));
+        System.out.println("GCD is: " + gcd(a, b));
+        System.out.println("LCM is: " + lcm(a, b));
         sc.close();
     }
 
     public static int gcd(int a, int b) {
         int big = a > b ? a : b;
         int small = a < b ? a : b;
-        int remainder = big % small;;
+        int remainder = big % small;
         while (remainder != 0) {
             big = small;
             small = remainder;
             remainder = big % small;
         }
         return small;
+    }
+
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
     }
 }
