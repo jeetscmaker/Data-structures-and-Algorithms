@@ -3,20 +3,31 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #377 (Div. 2), problem: (A) Buy a Shovel.
+ * contest: Codeforces Round #552 (Div. 3), problem: (A) Restoring Three Numbers.
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int k, r;
-        k = sc.nextInt();
-        r = sc.nextInt();
-        for (int i = 1; i <= 10; i++) {
-            if ((k * i) % 10 == r || (k * i) % 10 == 0) {
-                System.out.println(i);
-                break;
+        int abcd[] = new int[4], max = 0, max_index = 0;
+        for (short i = 0; i < 4; i++) {
+            abcd[i] = sc.nextInt();
+            if (max < abcd[i]) {
+                max = abcd[i];
+                max_index = i;
             }
         }
+        int x[] = new int[3];
+        for (short i = 0, j = 0; i < 4; i++) {
+            if (i != max_index) {
+                x[j] = abcd[i];
+                j++;
+            }
+        }
+        int answer[] = new int[3];
+        answer[0] = (x[0] - x[1] + x[2]) / 2;
+        answer[1] = (x[0] + x[1] - x[2]) / 2;
+        answer[2] = (x[1] - x[0] + x[2]) / 2;
+        System.out.println(answer[0] + " " + answer[1] + " " + answer[2]);
         sc.close();
     }
 
