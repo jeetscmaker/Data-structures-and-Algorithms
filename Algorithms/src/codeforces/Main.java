@@ -16,18 +16,11 @@ public class Main {
                 max_index = i;
             }
         }
-        int x[] = new int[3];
-        for (short i = 0, j = 0; i < 4; i++) {
-            if (i != max_index) {
-                x[j] = abcd[i];
-                j++;
+        for (int i = 0; i < 4; i++) {
+            if (i != max_index){
+                System.out.print(max - abcd[i] + " ");
             }
         }
-        int answer[] = new int[3];
-        answer[0] = (x[0] - x[1] + x[2]) / 2;
-        answer[1] = (x[0] + x[1] - x[2]) / 2;
-        answer[2] = (x[1] - x[0] + x[2]) / 2;
-        System.out.println(answer[0] + " " + answer[1] + " " + answer[2]);
         sc.close();
     }
 
