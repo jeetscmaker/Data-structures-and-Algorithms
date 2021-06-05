@@ -3,14 +3,25 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #552 (Div. 3), problem: (A) Restoring Three Numbers.
+ * contest: Codeforces Round #650 (Div. 3), problem: (A) Short Substrings
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        System.out.println("GCD is: " + gcd_r(a, b));
+        int t = sc.nextInt();
+        String s;
+        for (int i = 0; i < t; i++) {
+            s = sc.next();
+            if (s.length() == 2) {
+                System.out.println(s);
+            } else {
+                StringBuilder sb = new StringBuilder(String.valueOf(s.charAt(0)));
+                for (int j = 1; j < s.length(); j = j + 2) {
+                    sb.append(s.charAt(j));
+                }
+                System.out.println(sb.toString());
+            }
+        }
         sc.close();
     }
 
