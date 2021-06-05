@@ -8,22 +8,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int abcd[] = new int[4], max = 0, max_index = 0;
-        for (short i = 0; i < 4; i++) {
-            abcd[i] = sc.nextInt();
-            if (max < abcd[i]) {
-                max = abcd[i];
-                max_index = i;
-            }
-        }
-        for (int i = 0; i < 4; i++) {
-            if (i != max_index){
-                System.out.print(max - abcd[i] + " ");
-            }
-        }
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println("GCD is: " + gcd_r(a, b));
         sc.close();
     }
 
+    // finding GCD of two numbers iteratively.
     public static int gcd(int a, int b) {
         int big = a > b ? a : b;
         int small = a < b ? a : b;
@@ -34,6 +25,10 @@ public class Main {
             remainder = big % small;
         }
         return small;
+    }
+
+    public static int gcd_r(int a, int b) {
+        return (b == 0 ? a : gcd_r(b, a % b));
     }
 
     public static int lcm(int a, int b) {
