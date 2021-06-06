@@ -3,17 +3,25 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #375 (Div. 2), problem: (A) The New Year: Meeting Friends
+ * contest: Codeforces Round #392 (Div. 2), problem: (A) Holiday Of Equality
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n;
         n = sc.nextInt();
-        if((n/2) % 2 == 1)
-            System.out.println("NO");
-        else
-            System.out.println("YES");
+        int[] a = new int[n];
+        int max = 0;
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            if(a[i] > max)
+                max = a[i];
+        }
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += (max - a[i]);
+        }
+        System.out.println(sum);
         sc.close();
     }
 
