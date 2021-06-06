@@ -3,25 +3,20 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #650 (Div. 3), problem: (A) Short Substrings
+ * contest: Codeforces Round #375 (Div. 2), problem: (A) The New Year: Meeting Friends
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        String s;
-        for (int i = 0; i < t; i++) {
-            s = sc.next();
-            if (s.length() == 2) {
-                System.out.println(s);
-            } else {
-                StringBuilder sb = new StringBuilder(String.valueOf(s.charAt(0)));
-                for (int j = 1; j < s.length(); j = j + 2) {
-                    sb.append(s.charAt(j));
-                }
-                System.out.println(sb.toString());
-            }
-        }
+
+        short x1, x2, x3;
+        x1 = sc.nextShort();
+        x2 = sc.nextShort();
+        x3 = sc.nextShort();
+        short a = (short) (Math.abs(x1-x3) + Math.abs(x2-x3));
+        short b = (short) (Math.abs(x1-x2) + Math.abs(x3-x2));
+        short c = (short) (Math.abs(x3-x1) + Math.abs(x2-x1));
+        System.out.println(Math.min(Math.min(a,b), c));
         sc.close();
     }
 
