@@ -8,15 +8,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        short x1, x2, x3;
-        x1 = sc.nextShort();
-        x2 = sc.nextShort();
-        x3 = sc.nextShort();
-        short a = (short) (Math.abs(x1-x3) + Math.abs(x2-x3));
-        short b = (short) (Math.abs(x1-x2) + Math.abs(x3-x2));
-        short c = (short) (Math.abs(x3-x1) + Math.abs(x2-x1));
-        System.out.println(Math.min(Math.min(a,b), c));
+        int n;
+        n = sc.nextInt();
+        if((n/2) % 2 == 1)
+            System.out.println("NO");
+        else
+            System.out.println("YES");
         sc.close();
     }
 
