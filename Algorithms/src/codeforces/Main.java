@@ -3,25 +3,23 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #392 (Div. 2), problem: (A) Holiday Of Equality
+ * A run time comparison of gcd() and gcd_r().
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n;
+        int n, m;
         n = sc.nextInt();
-        int[] a = new int[n];
-        int max = 0;
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-            if(a[i] > max)
-                max = a[i];
-        }
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += (max - a[i]);
-        }
-        System.out.println(sum);
+        m = sc.nextInt();
+        long t1 = System.currentTimeMillis();
+        System.out.println(gcd(n,m));
+        long t2 = System.currentTimeMillis();
+        System.out.println("without recursion, gcd() takes " + (t2-t1));
+        System.out.println("========================================================");
+        long t3 = System.currentTimeMillis();
+        System.out.println(gcd_r(n,m));
+        long t4 = System.currentTimeMillis();
+        System.out.println("using recursion, gcd() takes " + (t4-t3));
         sc.close();
     }
 
