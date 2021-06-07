@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int k, l, m, n, d;
-        int count = 1;
+        int count = 0;
         k = sc.nextInt();
         l = sc.nextInt();
         m = sc.nextInt();
@@ -19,7 +19,7 @@ public class Main {
             System.out.println(d);
             return;
         } else {
-            for (int i = 2; i <= d; i++) {
+            for (int i = 1; i <= d; i++) {
                 if (is_not_divisible(k, l, m, n, i))
                     count++;
             }
