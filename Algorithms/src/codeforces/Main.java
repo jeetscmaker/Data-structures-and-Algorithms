@@ -1,9 +1,11 @@
 package codeforces;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
- * contest: Codeforces Round #105 (Div. 2), problem: (A) Insomnia cure.
+ * contest: Codeforces Round #141 (Div. 2), problem: (A) Is your horseshoe on the other hoof?
  */
 public class Main {
     public static void main(String[] args) {
@@ -14,17 +16,12 @@ public class Main {
         l = sc.nextInt();
         m = sc.nextInt();
         n = sc.nextInt();
-        d = sc.nextInt();
-        if (k == 1 || l == 1 || m == 1 || n == 1) {
-            System.out.println(d);
-            return;
-        } else {
-            for (int i = 1; i <= d; i++) {
-                if (is_not_divisible(k, l, m, n, i))
-                    count++;
-            }
-        }
-        System.out.println(d - count);
+        Set<Integer> set = new HashSet<>(4);
+        set.add(k);
+        set.add(l);
+        set.add(m);
+        set.add(n);
+        System.out.println(4 - set.size());
         sc.close();
     }
 
