@@ -3,24 +3,36 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * A run time comparison of gcd() and gcd_r().
+ * contest: Codeforces Round #105 (Div. 2), problem: (A) Insomnia cure.
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n, m;
-        n = sc.nextInt();
+        int k, l, m, n, d;
+        int count = 1;
+        k = sc.nextInt();
+        l = sc.nextInt();
         m = sc.nextInt();
-        long t1 = System.currentTimeMillis();
-        System.out.println(gcd(n,m));
-        long t2 = System.currentTimeMillis();
-        System.out.println("without recursion, gcd() takes " + (t2-t1));
-        System.out.println("========================================================");
-        long t3 = System.currentTimeMillis();
-        System.out.println(gcd_r(n,m));
-        long t4 = System.currentTimeMillis();
-        System.out.println("using recursion, gcd() takes " + (t4-t3));
+        n = sc.nextInt();
+        d = sc.nextInt();
+        if (k == 1 || l == 1 || m == 1 || n == 1) {
+            System.out.println(d);
+            return;
+        } else {
+            for (int i = 2; i <= d; i++) {
+                if (is_not_divisible(k, l, m, n, i))
+                    count++;
+            }
+        }
+        System.out.println(d - count);
         sc.close();
+    }
+
+    private static boolean is_not_divisible(int k, int l, int m, int n, int d) {
+        if ((d % k != 0) && (d % l != 0) && (d % m != 0) && (d % n != 0))
+            return true;
+        else
+            return false;
     }
 
     // finding GCD of two numbers iteratively.
