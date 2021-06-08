@@ -3,63 +3,33 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #640 (Div. 4), problem: (A) Sum of Round Numbers
+ * contest: Codeforces Round #270, problem: (A) Design Tutorial: Learn from Math
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t, n;
-        t = sc.nextInt();
-        for (int i = 0; i < t; i++) {
-            n = sc.nextInt();
-            if (String.valueOf(n).length() == 4) {
-                int a, b, c, d;
-                d = n % 10;
-                n = n / 10;
-                c = n % 10;
-                n = n / 10;
-                b = n % 10;
-                n = n / 10;
-                a = n;
-                print(a, b, c, d);
-            } else if (String.valueOf(n).length() == 3) {
-                int a, b, c;
-                c = n % 10;
-                n = n / 10;
-                b = n % 10;
-                n = n / 10;
-                a = n;
-                print(0, a, b, c);
-            } else if (String.valueOf(n).length() == 2) {
-                int a, b;
-                b = n % 10;
-                n = n / 10;
-                a = n;
-                print(0, 0, a, b);
-            } else {
-                if ((n >= 1 && n <= 9) || n == 10000)
-                    System.out.println(1 + "\n" + n);
+        int n = sc.nextInt();
+        if (n % 2 == 0) {
+            System.out.println(4 + " " + (n - 4));
+        } else {
+            int d = n / 2;
+            int r = n - d;
+            while (isPrime(d) || isPrime(r)) {
+                d--;
+                r++;
             }
-            System.out.println();
+            System.out.println(d + " " + r);
         }
         sc.close();
     }
 
-    private static void print(int a, int b, int c, int d) {
-        int count = 0;
-        if (a != 0) count++;
-        if (b != 0) count++;
-        if (c != 0) count++;
-        if (d != 0) count++;
-        System.out.println(count);
-        if (a != 0)
-            System.out.print(a * 1000 + " ");
-        if (b != 0)
-            System.out.print(b * 100 + " ");
-        if (c != 0)
-            System.out.print(c * 10 + " ");
-        if (d != 0)
-            System.out.print(d);
+    // n is not composite simply says that it must be a prime number
+    private static boolean isPrime(int d) {
+        for (int i = 2; i <= Math.sqrt(d); i++) {
+            if (d % i == 0)
+                return false;
+        }
+        return true;
     }
 
     private static boolean is_not_divisible(int k, int l, int m, int n, int d) {
