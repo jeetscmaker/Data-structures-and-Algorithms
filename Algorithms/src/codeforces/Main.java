@@ -3,22 +3,36 @@ package codeforces;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #270, problem: (A) Design Tutorial: Learn from Math
+ * contest: Codeforces Round #650 (Div. 3), problem: (B) Even Array
+ * System.out.flush() is mandatory because it is an interactive problem
+ * which means  its output is transferred to the input of your solution,
+ * and the output of your program is sent to interactor’s input.
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        if (n % 2 == 0) {
-            System.out.println(4 + " " + (n - 4));
-        } else {
-            int d = n / 2;
-            int r = n - d;
-            while (isPrime(d) || isPrime(r)) {
-                d--;
-                r++;
+        int t = sc.nextInt();
+        for (int i = 0; i < t; i++) {
+            short n = sc.nextShort();
+            int[] a = new int[n];
+            short count_even = 0;
+            short count_odd = 0;
+            for (int j = 0; j < n; j++) {
+                a[j] = sc.nextInt();
             }
-            System.out.println(d + " " + r);
+            for (int j = 0; j < n; j++) {
+                if (j % 2 == 0 && a[j] % 2 != 0)
+                    count_even++;
+                if (j % 2 == 1 && a[j] % 2 != 1)
+                    count_odd++;
+            }
+            if (count_even == count_odd) {
+                System.out.println(count_even);
+                System.out.flush();
+            } else {
+                System.out.println(-1);
+                System.out.flush();
+            }
         }
         sc.close();
     }
