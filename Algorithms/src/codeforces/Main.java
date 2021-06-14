@@ -1,40 +1,31 @@
 package codeforces;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * contest: Codeforces Round #650 (Div. 3), problem: (B) Even Array
- * System.out.flush() is mandatory because it is an interactive problem
- * which means  its output is transferred to the input of your solution,
- * and the output of your program is sent to interactor’s input.
+ * @author jeetscmaker
+ * contest: Codeforces Round #677 (Div. 3), problem: (A) Boring Apartments
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        for (int i = 0; i < t; i++) {
-            short n = sc.nextShort();
-            int[] a = new int[n];
-            short count_even = 0;
-            short count_odd = 0;
-            for (int j = 0; j < n; j++) {
-                a[j] = sc.nextInt();
+        short t = sc.nextShort();
+        for (int tt = 0; tt < t; tt++) {
+            int n = sc.nextInt();
+            HashMap<String, Integer> map = new HashMap<>();
+            int count = 0;
+            for (int i = 1; i <= 9; i++) {
+                String s = "";
+                for (int j = 1; j <= 4; j++) {
+                    s = s + i;
+                    count = count + s.length();
+                    map.put(s, count);
+                }
             }
-            for (int j = 0; j < n; j++) {
-                if (j % 2 == 0 && a[j] % 2 != 0)
-                    count_even++;
-                if (j % 2 == 1 && a[j] % 2 != 1)
-                    count_odd++;
-            }
-            if (count_even == count_odd) {
-                System.out.println(count_even);
-                System.out.flush();
-            } else {
-                System.out.println(-1);
-                System.out.flush();
-            }
+            String num = String.valueOf(n);
+            System.out.println(map.get(num));
         }
-        sc.close();
     }
 
     // n is not composite simply says that it must be a prime number
