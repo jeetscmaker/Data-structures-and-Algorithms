@@ -1,31 +1,40 @@
 package codeforces;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * @author jeetscmaker
- * contest: Codeforces Round #677 (Div. 3), problem: (A) Boring Apartments
- */
+ * Find the maximum sum of a contiguous subarray of size k in a given array
+ * Input  : arr[] = {100, 200, 300, 400}, k = 2, Output : 700 {300,400}
+ * Input  : arr[] = {1, 4, 2, 10, 23, 3, 1, 0, 20}, k = 4, Output : 39 {4, 2, 10, 23}
+ * */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        short t = sc.nextShort();
-        for (int tt = 0; tt < t; tt++) {
-            int n = sc.nextInt();
-            HashMap<String, Integer> map = new HashMap<>();
-            int count = 0;
-            for (int i = 1; i <= 9; i++) {
-                String s = "";
-                for (int j = 1; j <= 4; j++) {
-                    s = s + i;
-                    count = count + s.length();
-                    map.put(s, count);
-                }
-            }
-            String num = String.valueOf(n);
-            System.out.println(map.get(num));
+        int n, k;
+        n = sc.nextInt();
+        k = sc.nextInt();
+        int a[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
         }
+        int sum = 0, max_sum = 0;
+        // sum of first k elements
+        for (int i = 0; i < k; ++i) {
+            sum += a[i];
+        }
+        int start = 0;
+        for (int i = k; i < n; ++i) {
+            if (sum > max_sum) {
+                max_sum = sum;
+            }
+            sum = sum - a[start] + a[i];
+            start++;
+        }
+        if (sum > max_sum) {
+            max_sum = sum;
+        }
+        System.out.println("Max sum is: " + max_sum);
+        sc.close();
     }
 
     // n is not composite simply says that it must be a prime number
