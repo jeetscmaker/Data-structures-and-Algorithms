@@ -1,9 +1,10 @@
 package codeforces;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Codeforces Round #719 (Div. 3), problem: (A) Do Not Be Distracted!, Accepted
+ * contest: Codeforces Round #656 (Div. 3), problem: (B) Restore the Permutation by Merger.
  */
 public class Main {
     public static void main(String[] args) {
@@ -11,23 +12,21 @@ public class Main {
         int t = sc.nextInt();
         for (int i = 0; i < t; i++) {
             int n = sc.nextInt();
-            String s = sc.next();
-            boolean isStringOk = true;
-            OUTER:
+            ArrayList<Integer> al = new ArrayList<>();
+            for (int j = 0; j < 2 * n; j++) {
+                al.add(sc.nextInt());
+            }
+            ArrayList<Integer> res = new ArrayList<>();
             for (int j = 0; j < n; j++) {
-                char c = s.charAt(j);
-                int k = s.lastIndexOf(c);
-                for (int l = j; l <= k; l++) {
-                    if (s.charAt(l) != c) {
-                        isStringOk = false;
-                        break OUTER;
-                    }
+                Integer element = al.get(0);
+                res.add(element);
+                for (int k = 0; k < 2; k++) {
+                    al.remove(element);
                 }
             }
-            if (isStringOk)
-                System.out.println("YES");
-            else
-                System.out.println("NO");
+            for (int j = 0; j < res.size(); j++) {
+                System.out.print(res.get(j) + " ");
+            }
         }
         sc.close();
     }
