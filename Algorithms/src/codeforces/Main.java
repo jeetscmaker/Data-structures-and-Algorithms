@@ -1,21 +1,25 @@
 package codeforces;
 
 import java.util.Scanner;
-// contest: Codeforces Round #645 (Div. 2), problem: (A) Park Lighting
+// contest: Codeforces Round #107 (Div. 2), problem: (A) Soft Drinking,
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t;
-        t = sc.nextInt();
-        int n, m;
-        for (int i = 0; i < t; i++) {
-            n = sc.nextInt();
-            m = sc.nextInt();
-            if (m % 2 == 0 || n % 2 == 0)
-                System.out.println(m * n / 2);
-            else
-                System.out.println((m * n / 2) + 1);
-        }
+        // positive integers n, k, l, c, d, p, nl, np, not exceeding 1000 and no less than 1
+        int n,k,l,c,d,p,nl,np;
+        n = sc.nextInt();
+        k = sc.nextInt();
+        l = sc.nextInt();
+        c = sc.nextInt();
+        d = sc.nextInt();
+        p = sc.nextInt();
+        nl = sc.nextInt();
+        np = sc.nextInt();
+
+        int soft_drinks = (l*k)/nl;
+        int lime_slices = c*d;
+        int salt = p/np;
+        System.out.println(Math.min(salt, Math.min(soft_drinks, lime_slices))/n);
         sc.close();
     }
 }
