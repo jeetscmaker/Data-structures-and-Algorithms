@@ -1,26 +1,24 @@
 package leetcode;
-/** Max Consecutive Ones,
- * Given a binary array nums, return the maximum number of consecutive 1's in the array.
+/** Find Numbers with Even Number of Digits.
+ * Given an array nums of integers, return how many of them contain an even number of digits.
  * */
 class Solution {
-    public int findMaxConsecutiveOnes(int[] nums) {
-        if(nums.length == 1)
-            return (nums[0] == 1 ? 1 : 0);
-
-        int maxCount = 0;
-        int count = (nums[0] == 1)? 1 : 0;
-        for(int i = 1; i< nums.length; i++){
-            if(nums[i] == 1){
-                count++;
-            } else {
-                if(nums[i-1] == 1) {
-                    maxCount = count>maxCount ? count : maxCount;
-                    count = 0;
-                }
-            }
+    public static boolean hasEvenNumberOfDigits(int n){
+        int count = 0;
+        while(n > 0){
+            count++;
+            n /= 10;
         }
-        maxCount = count>maxCount ? count : maxCount;
-        return maxCount;
+        return (count%2 == 0);
+    }
+
+    public int findNumbers(int[] a) {
+        int count = 0;
+        for(int i = 0; i<a.length; i++){
+            if(hasEvenNumberOfDigits(a[i]))
+                count++;
+        }
+        return count;
     }
 
     public static void main(String[] args) {
