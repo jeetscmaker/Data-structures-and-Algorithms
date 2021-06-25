@@ -1,43 +1,30 @@
 package codeforces;
 
 import java.util.Scanner;
-
-// contest: Codeforces Round #223 (Div. 2), problem: (A) Sereja and Dima
+// contest: Codeforces Round #617 (Div. 3), problem: (A) Array with Odd Sum
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-        }
-        int i = 0, j = n - 1;
-        int s_count = 0, d_count = 0;
-        while (i < j) {
-            // 4 1 2 10
-            if (a[i] > a[j]) {
-                s_count += a[i];
-                i++;
-            } else {
-                s_count += a[j];
-                j--;
+        int t = sc.nextInt();
+        for (int i = 0; i < t; i++) {
+            int n = sc.nextInt();
+            int[] a = new int[n];
+            int evens = 0, odds = 0;
+            for (int j = 0; j < n; j++) {
+                a[j] = sc.nextInt();
+                if (a[j] % 2 == 0)
+                    evens++;
+                else
+                    odds++;
             }
-            // Dima's points calculation.
-            if (a[i] > a[j]) {
-                d_count += a[i];
-                i++;
-            } else {
-                d_count += a[j];
-                j--;
+            if (evens == n) {
+                System.out.println("NO");
+                continue;
             }
+            if (odds == n && n % 2 == 0)
+                System.out.println("NO");
+            else
+                System.out.println("YES");
         }
-        if (n % 2 != 0) // n is odd number
-        {
-            // then i must be equal to j after the loop terminates. And every odd time it's Sereja's turn
-            // to collect a point. Therefore s_count should be updated with the latest value of i or j.
-            s_count += a[i];
-        }
-        System.out.println(s_count + " " + d_count);
-        sc.close();
     }
 }
