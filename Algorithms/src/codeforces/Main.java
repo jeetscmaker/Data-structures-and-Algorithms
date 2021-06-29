@@ -1,30 +1,28 @@
 package codeforces;
 
 import java.util.Scanner;
-// contest: Codeforces Round #617 (Div. 3), problem: (A) Array with Odd Sum
+
+/**
+ * contest: Codeforces Round #728 (Div. 2), A. Pretty Permutations
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        for (int i = 0; i < t; i++) {
-            int n = sc.nextInt();
-            int[] a = new int[n];
-            int evens = 0, odds = 0;
-            for (int j = 0; j < n; j++) {
-                a[j] = sc.nextInt();
-                if (a[j] % 2 == 0)
-                    evens++;
-                else
-                    odds++;
+        short t = sc.nextShort();
+        for (int tt = 0; tt < t; tt++) {
+            short n = sc.nextShort();
+            if (n % 2 == 0) {
+                for (int i = 1, j = 2; i < n && j <= n; i += 2, j += 2) {
+                    System.out.print(j + " " + i + " ");
+                }
+                System.out.println();
+            } else {
+                System.out.print(3 + " " + 1 + " " + 2 + " ");
+                for (int i = 4; i < n; i += 2) {
+                    System.out.print((i + 1) + " " + (i) + " ");
+                }
+                System.out.println();
             }
-            if (evens == n) {
-                System.out.println("NO");
-                continue;
-            }
-            if (odds == n && n % 2 == 0)
-                System.out.println("NO");
-            else
-                System.out.println("YES");
         }
     }
 }
