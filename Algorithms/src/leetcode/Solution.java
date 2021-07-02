@@ -1,27 +1,25 @@
 package leetcode;
-/** Find Numbers with Even Number of Digits.
- * Given an array nums of integers, return how many of them contain an even number of digits.
- * */
-class Solution {
-    public static boolean hasEvenNumberOfDigits(int n){
-        int count = 0;
-        while(n > 0){
-            count++;
-            n /= 10;
-        }
-        return (count%2 == 0);
-    }
 
-    public int findNumbers(int[] a) {
-        int count = 0;
-        for(int i = 0; i<a.length; i++){
-            if(hasEvenNumberOfDigits(a[i]))
-                count++;
-        }
-        return count;
-    }
+import java.util.Scanner;
 
+/**
+ * @author jeetscmaker
+ * contest: Codeforces Round #301 (Div. 2), problem: (A) Combination Lock
+ */
+public class Solution {
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String originalState = sc.next();
+        String password = sc.next();
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            int a = Math.abs((originalState.charAt(i) - '0') - (password.charAt(i) - '0'));
+            int b = 10 - a;
+            sum += Math.min(a, b);
+        }
+        System.out.println(sum);
+        sc.close();
     }
 }
+
