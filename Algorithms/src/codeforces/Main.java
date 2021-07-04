@@ -1,46 +1,42 @@
 package codeforces;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
-// @author jeetscmaker
-// contest: Codeforces Round #369 (Div. 2), problem: (A) Bus to Udayland
+/**
+ * @author jeetscmaker
+ * contest: Codeforces Round #666 (Div. 2), problem: (A) Juggling Letters
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        char[][] a = new char[n][5];
-        for (int i = 0; i < n; i++) {
-            String s = sc.next();
-            int j = 0;
-            for (char c : s.toCharArray()) {
-                a[i][j] = c;
-                j++;
-            }
-        }
-        boolean isAvailable = false;
-        OUTER:
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < 5; j = j + 3) {
-                if (a[i][j] == 'O' && a[i][j + 1] == 'O') {
-                    a[i][j] = '+';
-                    a[i][j + 1] = '+';
-                    isAvailable = true;
-                    break OUTER;
-                }
-
-            }
-        }
-        if (isAvailable) {
-            System.out.println("YES\n");
+        byte t = sc.nextByte();
+        for (byte b = 1; b <= t; b++) {
+            HashMap<Character, Integer> map = new HashMap<>(26);
+            int n = sc.nextInt();
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < 5; j++) {
-                    System.out.print(a[i][j]);
+                String s;
+                s = sc.next();
+                for (char c : s.toCharArray()) {
+                    if (map.containsKey(c)) {
+                        map.put(c, map.get(c) + 1);
+                    } else {
+                        map.put(c, 1);
+                    }
                 }
-                System.out.println();
             }
-
-        } else
-            System.out.println("NO");
+            boolean isPossible = true;
+            for (int i : map.values()) {
+                if (i % n != 0) {
+                    isPossible = false;
+                    break;
+                }
+            }
+            if (isPossible) System.out.println("YES");
+            else System.out.println("NO");
+            map.clear();
+        }
         sc.close();
     }
 }
+
