@@ -1,42 +1,30 @@
 package codeforces;
-
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author jeetscmaker
- * contest: Codeforces Round #666 (Div. 2), problem: (A) Juggling Letters
+ * contest: Educational Codeforces Round 104 (Div. 2), problem: (A) Arena
  */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        byte t = sc.nextByte();
-        for (byte b = 1; b <= t; b++) {
-            HashMap<Character, Integer> map = new HashMap<>(26);
+        int t = sc.nextInt();
+        int[] arr;
+        while (t-- > 0) {
             int n = sc.nextInt();
+            arr = new int[n];
+            int smallest = Integer.MAX_VALUE;
             for (int i = 0; i < n; i++) {
-                String s;
-                s = sc.next();
-                for (char c : s.toCharArray()) {
-                    if (map.containsKey(c)) {
-                        map.put(c, map.get(c) + 1);
-                    } else {
-                        map.put(c, 1);
-                    }
-                }
+                arr[i] = sc.nextInt();
+                smallest = arr[i] < smallest ? arr[i] : smallest;
             }
-            boolean isPossible = true;
-            for (int i : map.values()) {
-                if (i % n != 0) {
-                    isPossible = false;
-                    break;
-                }
+
+            int count = 0;
+            for (int i = 0; i < n; i++) {
+                if (arr[i] > smallest) count++;
             }
-            if (isPossible) System.out.println("YES");
-            else System.out.println("NO");
-            map.clear();
+            System.out.println(count);
         }
         sc.close();
     }
 }
-
