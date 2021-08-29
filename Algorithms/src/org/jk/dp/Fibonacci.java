@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 /**
  * Fibonacci series : 0 1 1 2 3 5 8 13 21...every element is the sum of the previous two.
- * We will use 'memoization' here.
+ * This technique has O(1) space complexity whereas memoization has O(n) space complexity.
+ * Although this technique has same time complexity O(n) as in the case of memoization, but
+ * this technique is not applicable in every dynamic programming problem.
  */
 
 public class Fibonacci {
