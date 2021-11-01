@@ -1,47 +1,35 @@
 package tree;
 
-// Java program to demonstrate insert operation in binary search tree
-public class BinarySearchTree {
+/**
+ * Java program to demonstrate insert operation in binary search tree
+ * Technically there is no difference between BinarySearchTreeNode and BinarySearchTree classes,
+ * but still the BinarySearchTree was created to demonstrate that the "insert()" makes a difference.
+ * The insertion operation makes a BSTNode totally a BST because the nodes follow the protocol of a BST.
+ */
+public class BinarySearchTree extends BinarySearchTreeNode {
+    BinarySearchTreeNode root;
 
-    /* Class containing left and right child of current node and key value*/
-    class Node {
-        int key;
-        Node left, right;
-
-        public Node(int item) {
-            key = item;
-            left = right = null;
-        }
-    }
-
-    // Root of BST
-    Node root;
-
-    // Constructor
     BinarySearchTree() {
         root = null;
     }
 
     // This method mainly calls insertRec()
     void insert(int key) {
-        root = insertRec(root, key);
+        root = insertRecursion(root, key);
     }
 
     /* A recursive function to insert a new key in BST */
-    Node insertRec(Node root, int key) {
-
+    BinarySearchTreeNode insertRecursion(BinarySearchTreeNode root, int key) {
         /* If the tree is empty, return a new node */
         if (root == null) {
-            root = new Node(key);
+            root = new BinarySearchTreeNode(key);
             return root;
         }
-
         /* Otherwise, recur down the tree */
-        if (key < root.key)
-            root.left = insertRec(root.left, key);
-        else if (key > root.key)
-            root.right = insertRec(root.right, key);
-
+        if (key < root.getData())
+            root.setLeft(insertRecursion(root.getLeft(), key));
+        else if (key > root.getData())
+            root.setRight(insertRecursion(root.getRight(), key));
         /* return the (unchanged) node pointer */
         return root;
     }
@@ -52,24 +40,23 @@ public class BinarySearchTree {
     }
 
     // A utility function to do inorder traversal of BST
-    void inorderRec(Node root) {
+    void inorderRec(BinarySearchTreeNode root) {
         if (root != null) {
-            inorderRec(root.left);
-            System.out.println(root.key);
-            inorderRec(root.right);
+            inorderRec(root.getLeft());
+            System.out.println(root.getData());
+            inorderRec(root.getRight());
         }
     }
 
     // Driver Program to test above functions
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
-
-		/* Let us create following BST 
-			50 
+		/* Let us create following BST
+		  50
 		/	 \ 
-		30	 70 
-		/ \ / \ 
-	20 40 60 80 */
+	  30	 70
+	 / \     / \
+	20 40    60 80 */
         tree.insert(50);
         tree.insert(30);
         tree.insert(20);
@@ -82,4 +69,3 @@ public class BinarySearchTree {
         tree.inorder();
     }
 }
-
