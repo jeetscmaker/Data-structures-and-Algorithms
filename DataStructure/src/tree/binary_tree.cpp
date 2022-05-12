@@ -28,6 +28,9 @@ public:
 	void print_tree(binary_tree root){
 
 	}
+	void preOrder_traverse(binary_tree root);
+	void inorder_traverse(binary_tree root);
+	void postOrder_traverse(binary_tree root);
 };
 
 int main() {
