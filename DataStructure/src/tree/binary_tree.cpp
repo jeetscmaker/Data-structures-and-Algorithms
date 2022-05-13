@@ -37,7 +37,7 @@ public:
 
 	}
 	void preOrder_traverse(binary_tree* root);
-	void inorder_traverse(binary_tree* root);
+	void inOrder_traverse(binary_tree* root);
 	void postOrder_traverse(binary_tree* root);
 };
 
@@ -47,6 +47,24 @@ public:
 		cout << root->get_data() << " ";
 		preOrder_traverse(root->get_left());
 		preOrder_traverse(root->get_right());
+	}
+}
+
+void binary_tree :: inOrder_traverse(binary_tree* root) {
+	if(root != NULL) {
+		inOrder_traverse(root->get_left());
+		// print data, we can process this data as per our need.
+		cout << root->get_data() << " ";
+		inOrder_traverse(root->get_right());
+	}
+}
+
+void binary_tree :: postOrder_traverse(binary_tree* root) {
+	if(root != NULL) {
+		postOrder_traverse(root->get_left());
+		postOrder_traverse(root->get_right());
+		// print data, we can process this data as per our need.
+		cout << root->get_data() << " ";
 	}
 }
 
@@ -66,6 +84,16 @@ int main() {
 	t3.set_left(&t6);
 	t3.set_right(&t7);
 	
+	cout << "preOrder traversal: ";
 	t1.preOrder_traverse(&t1);
+	cout << "\n";
+
+	cout << "inorder travaersal: ";
+	t1.inOrder_traverse(&t1);
+	cout << "\n";
+
+	cout << "postOrder traversal: ";
+	t1.postOrder_traverse(&t1);
+
 	return 0;
 }
