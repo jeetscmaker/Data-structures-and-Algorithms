@@ -34,7 +34,12 @@ public:
 		right = r;
 	}
 	void print_tree(binary_tree* root){
-
+		if(root != NULL){
+			// printing in pre-order traversal form by default.
+			cout << root->get_data() << " ";
+			print_tree(root->get_left());
+			print_tree(root->get_right());
+		}
 	}
 	void preOrder_traverse(binary_tree* root);
 	void inOrder_traverse(binary_tree* root);
