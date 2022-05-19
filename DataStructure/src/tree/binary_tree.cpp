@@ -73,6 +73,8 @@ void binary_tree :: postOrder_traverse(binary_tree* root) {
 	}
 }
 
+binary_tree* search_in_BST(int key, binary_tree* root);
+
 int main() {
 	binary_tree t1(10);
 	binary_tree t2(7);
@@ -101,4 +103,18 @@ int main() {
 	t1.postOrder_traverse(&t1);
 
 	return 0;
+}
+/**
+ * This function returns the node whose data is equal to the given key.
+ * If there is no such data in the tree, the function returns a NULL pointer.
+ * */
+binary_tree* search_in_BST(int key, binary_tree* root) {
+	if(root == NULL)
+		return NULL;
+	if(root->get_data() == key)
+		return root;
+	else if(root->get_data() < key) 
+		return search_in_BST(key, root->get_right());
+	else
+		return search_in_BST(key, root->get_left());
 }
