@@ -74,6 +74,7 @@ void binary_tree :: postOrder_traverse(binary_tree* root) {
 }
 
 binary_tree* search_in_BST(int key, binary_tree* root);
+binary_tree* insert_in_BST(int key, binary_tree* root);
 
 int main() {
 	binary_tree t1(10);
@@ -117,4 +118,26 @@ binary_tree* search_in_BST(int key, binary_tree* root) {
 		return search_in_BST(key, root->get_right());
 	else
 		return search_in_BST(key, root->get_left());
+}
+
+/**
+ * This function inserts a node(key) in a Binary Search Tree.
+ * */
+binary_tree* insert_in_BST(int key, binary_tree* root) {
+	binary_tree newNode(key);
+	if(root == NULL)
+		return newNode;
+	binary_tree* current = root, parent = NULL;
+	while(current != NULL){
+		parent = current;
+		if(key >= current->get_data())
+			current = current->get_right();
+		else
+			current = current->get_left();
+	}
+	if(key >= parent->get_data())
+		parent->set_right(newNode);
+	else
+		parent->set_left(newNode);
+	return root;
 }
