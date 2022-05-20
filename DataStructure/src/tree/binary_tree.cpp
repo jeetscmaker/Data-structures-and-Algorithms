@@ -45,6 +45,7 @@ public:
 	void inOrder_traverse(binary_tree* root);
 	void postOrder_traverse(binary_tree* root);
 	int size(binary_tree* root);
+	int height(binary_tree* root);
 };
 
  void binary_tree :: preOrder_traverse(binary_tree* root) {
@@ -80,6 +81,17 @@ int binary_tree :: size(binary_tree* root) {
 	int left_size = size(root->get_left());
 	int right_size = size(root->get_right());
 	return left_size + right_size + 1;
+}
+/**
+ * The height of a binary tree is the maximum of the longest path on its left side
+ * and its right side + 1(for root node).
+ * */
+int binary_tree :: height(binary_tree* root) {
+	if(root == NULL)
+		return 0;
+	int left_height = height(root->get_left());
+	int right_height = height(root->get_right());
+	return 1 + max(left_height, right_height);
 }
 
 binary_tree* search_in_BST(int key, binary_tree* root);
