@@ -44,6 +44,7 @@ public:
 	void preOrder_traverse(binary_tree* root);
 	void inOrder_traverse(binary_tree* root);
 	void postOrder_traverse(binary_tree* root);
+	int size(binary_tree* root);
 };
 
  void binary_tree :: preOrder_traverse(binary_tree* root) {
@@ -71,6 +72,14 @@ void binary_tree :: postOrder_traverse(binary_tree* root) {
 		// print data, we can process this data as per our need.
 		cout << root->get_data() << " ";
 	}
+}
+
+int binary_tree :: size(binary_tree* root) {
+	if(root == NULL)
+		return 0;
+	int left_size = size(root->get_left());
+	int right_size = size(root->get_right());
+	return left_size + right_size + 1;
 }
 
 binary_tree* search_in_BST(int key, binary_tree* root);
