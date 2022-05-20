@@ -75,6 +75,7 @@ void binary_tree :: postOrder_traverse(binary_tree* root) {
 
 binary_tree* search_in_BST(int key, binary_tree* root);
 binary_tree* insert_in_BST(int key, binary_tree* root);
+bool is_same_binaryTree(binary_tree* root1, binary_tree root2);
 
 int main() {
 	binary_tree t1(10);
@@ -140,4 +141,18 @@ binary_tree* insert_in_BST(int key, binary_tree* root) {
 	else
 		parent->set_left(newNode);
 	return root;
+}
+
+/**
+ * If the two binary trees (denoted by their root nodes root1 and root2 respectively)
+ * are exactly the same, this function returns true, else it returns false;
+ * */
+bool is_same_binaryTree(binary_tree* root1, binary_tree root2) {
+	if(root1 == NULL && root2 == NULL)
+		return true;
+	if(root1 == NULL || root2 == NULL)
+		return false;
+	return (root1->get_data() == root2->get_data())
+			&&	is_same_binaryTree(root1->get_left(), root2->get_left())
+			&&	is_same_binaryTree(root1->get_right(), root2->get_right());
 }
