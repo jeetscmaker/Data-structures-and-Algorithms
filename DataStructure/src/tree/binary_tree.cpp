@@ -97,6 +97,7 @@ int binary_tree :: height(binary_tree* root) {
 binary_tree* search_in_BST(int key, binary_tree* root);
 binary_tree* insert_in_BST(int key, binary_tree* root);
 bool is_same_binaryTree(binary_tree* root1, binary_tree root2);
+bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v);
 
 int main() {
 	binary_tree t1(10);
@@ -176,4 +177,33 @@ bool is_same_binaryTree(binary_tree* root1, binary_tree root2) {
 	return (root1->get_data() == root2->get_data())
 			&&	is_same_binaryTree(root1->get_left(), root2->get_left())
 			&&	is_same_binaryTree(root1->get_right(), root2->get_right());
+}
+
+/**
+ * Given a sum. Find whether there is a path from the root node to ANY LEAF
+ * node such that the sum of elements in that path is equal to the given sum.
+ * */
+bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v) {
+	if(root == NULL)
+		return false;
+	// check for leaf node
+	if(root->get_left() ==  NULL && root->get_right() == NULL) {
+		if(root->get_data() == sum) {
+			v.push_back(root->get_data());
+			return true;
+		}
+		else
+			return false;
+	}
+	if(root_to_leaf_sum(root->get_left(), sum - root->get_data(), v)) {
+		v.push_back(root->get_data());
+		return true;
+	}
+
+	if(root_to_leaf_sum(root->get_right(), sum - root->get_data(), v)) {
+		v.push_back(root->get_data());
+		return true;
+	}
+
+	return false;
 }
