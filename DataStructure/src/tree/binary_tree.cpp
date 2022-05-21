@@ -98,6 +98,7 @@ binary_tree* search_in_BST(int key, binary_tree* root);
 binary_tree* insert_in_BST(int key, binary_tree* root);
 bool is_same_binaryTree(binary_tree* root1, binary_tree root2);
 bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v);
+bool is_BST(binary_tree* root, int MIN, int MAX);
 
 int main() {
 	binary_tree t1(10);
@@ -206,4 +207,17 @@ bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v) {
 	}
 
 	return false;
+}
+
+/**
+ * Given the root of a binary tree. Find out whether it is a binary 
+ * search tree or not. Starting values for MIN is INT_MIN and MAX is INT_MAX.
+ * */
+bool is_BST(binary_tree* root, int MIN, int MAX) {
+	if(root == NULL)
+		return true;
+	if(root->get_data() < MIN || root->get_data() > MAX)
+		return false;
+	return is_BST(root->get_left(), MIN, root->get_data()) 
+		 && is_BST(root->get_right(), root->get_data(), MAX);
 }
