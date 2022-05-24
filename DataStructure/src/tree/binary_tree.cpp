@@ -1,7 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-
+/*
+              10         preorder:   10 7 15 8 3 23 45
+             /  \        inorder :   15 7 8 10 23 3 45
+            7    3       postorder:  15 8 7 23 45 3 10
+           / \  / \      levelOrder: 10 7 3 15 8 23 45
+          15  8 23 45 
+*/
 class binary_tree
 {
 private:
@@ -44,6 +49,7 @@ public:
 	void preOrder_traverse(binary_tree* root);
 	void inOrder_traverse(binary_tree* root);
 	void postOrder_traverse(binary_tree* root);
+	void levelOrder_traverse(binary_tree* root);
 	int size(binary_tree* root);
 	int height(binary_tree* root);
 };
@@ -72,6 +78,22 @@ void binary_tree :: postOrder_traverse(binary_tree* root) {
 		postOrder_traverse(root->get_right());
 		// print data, we can process this data as per our need.
 		cout << root->get_data() << " ";
+	}
+}
+
+void binary_tree :: levelOrder_traverse(binary_tree* root) {
+	queue<binary_tree*> q;
+	if(root != NULL) {
+		q.push(root);
+		while(!q.empty()) {
+			binary_tree* top = q.front();
+			cout << top->get_data() << " ";
+			q.pop();
+			if(top->get_left() != NULL)
+				q.push(top->get_left());
+			if(top->get_right() != NULL)
+				q.push(top->get_right());
+		}
 	}
 }
 
@@ -126,6 +148,9 @@ int main() {
 
 	cout << "postOrder traversal: ";
 	t1.postOrder_traverse(&t1);
+	
+	cout << "level order traversal: ";
+	t1.levelOrder_traverse(&t1);
 
 	return 0;
 }
@@ -150,8 +175,9 @@ binary_tree* search_in_BST(int key, binary_tree* root) {
 binary_tree* insert_in_BST(int key, binary_tree* root) {
 	binary_tree newNode(key);
 	if(root == NULL)
-		return newNode;
-	binary_tree* current = root, parent = NULL;
+		root = &newNode;
+	binary_tree* current = root;
+	binary_tree* parent = NULL;
 	while(current != NULL){
 		parent = current;
 		if(key >= current->get_data())
@@ -160,9 +186,9 @@ binary_tree* insert_in_BST(int key, binary_tree* root) {
 			current = current->get_left();
 	}
 	if(key >= parent->get_data())
-		parent->set_right(newNode);
+		parent->set_right(&newNode);
 	else
-		parent->set_left(newNode);
+		parent->set_left(&newNode);
 	return root;
 }
 
@@ -170,7 +196,7 @@ binary_tree* insert_in_BST(int key, binary_tree* root) {
  * If the two binary trees (denoted by their root nodes root1 and root2 respectively)
  * are exactly the same, this function returns true, else it returns false;
  * */
-bool is_same_binaryTree(binary_tree* root1, binary_tree root2) {
+bool is_same_binaryTree(binary_tree* root1, binary_tree* root2) {
 	if(root1 == NULL && root2 == NULL)
 		return true;
 	if(root1 == NULL || root2 == NULL)
