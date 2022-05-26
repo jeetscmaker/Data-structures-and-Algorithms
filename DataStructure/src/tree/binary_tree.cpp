@@ -121,6 +121,7 @@ binary_tree* insert_in_BST(int key, binary_tree* root);
 bool is_same_binaryTree(binary_tree* root1, binary_tree root2);
 bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v);
 bool is_BST(binary_tree* root, int MIN, int MAX);
+void reverse_levelOrder(binary_tree* root);
 
 int main() {
 	binary_tree t1(10);
@@ -148,10 +149,14 @@ int main() {
 
 	cout << "postOrder traversal: ";
 	t1.postOrder_traverse(&t1);
+	cout << "\n";
 	
 	cout << "level order traversal: ";
 	t1.levelOrder_traverse(&t1);
+	cout << "\n";
 
+	cout << "reverse level order traversal: ";
+	reverse_levelOrder(&t1);
 	return 0;
 }
 /**
@@ -246,4 +251,30 @@ bool is_BST(binary_tree* root, int MIN, int MAX) {
 		return false;
 	return is_BST(root->get_left(), MIN, root->get_data()) 
 		 && is_BST(root->get_right(), root->get_data(), MAX);
+}
+
+/*
+ Print the level order traversal of the binary tree in reverse order.
+ As per the above tree, the output sould look like: 15 8 23 45 7 3 10.
+ This problems needs a queue and a stack.
+*/
+void reverse_levelOrder(binary_tree* root) {
+	if(root == NULL) return;
+	queue<binary_tree*> q;
+	stack<binary_tree*> st;
+	q.push(root);
+	binary_tree* top;
+	while(!q.empty()) {
+		top = q.front();
+		if(top->get_right() != NULL)
+			q.push(top->get_right());
+		if(top->get_left() != NULL)
+			q.push(top->get_left());
+		st.push(top);
+		q.pop();
+	}
+	while(!st.empty()) {
+		cout << (st.top())->get_data() << " ";
+		st.pop();
+	}
 }
