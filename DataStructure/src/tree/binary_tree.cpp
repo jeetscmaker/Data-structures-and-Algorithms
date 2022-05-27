@@ -122,6 +122,7 @@ bool is_same_binaryTree(binary_tree* root1, binary_tree root2);
 bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v);
 bool is_BST(binary_tree* root, int MIN, int MAX);
 void reverse_levelOrder(binary_tree* root);
+binary_tree* lowest_common_ancestor(binary_tree* root, binary_tree* node1, binary_tree* node2);
 
 int main() {
 	binary_tree t1(10);
@@ -157,6 +158,7 @@ int main() {
 
 	cout << "reverse level order traversal: ";
 	reverse_levelOrder(&t1);
+	
 	return 0;
 }
 /**
@@ -277,4 +279,17 @@ void reverse_levelOrder(binary_tree* root) {
 		cout << (st.top())->get_data() << " ";
 		st.pop();
 	}
+}
+
+/*
+  The lowest common ancestor of two given nodes node1 and node2 needs to be found
+  in a BST whose root node is 'root';
+*/
+binary_tree* lowest_common_ancestor(binary_tree* root, binary_tree* node1, binary_tree* node2) {
+	if(root->get_data() > max(node1->get_data(), node2->get_data()))
+		return lowest_common_ancestor(root->get_left(), node1, node2);
+	else if(root->get_data() < min(node1->get_data(), node2->get_data()))
+		return lowest_common_ancestor(root->get_right(), node1, node2);
+	else
+		return root;
 }
