@@ -122,7 +122,8 @@ bool is_same_binaryTree(binary_tree* root1, binary_tree root2);
 bool root_to_leaf_sum(binary_tree* root, int sum, std::vector<int> v);
 bool is_BST(binary_tree* root, int MIN, int MAX);
 void reverse_levelOrder(binary_tree* root);
-binary_tree* lowest_common_ancestor(binary_tree* root, binary_tree* node1, binary_tree* node2);
+binary_tree* lca_in_BST(binary_tree* root, binary_tree* node1, binary_tree* node2);
+binary_tree* lca(binary_tree* root, binary_tree* node1, binary_tree* node2);
 
 int main() {
 	binary_tree t1(10);
@@ -158,7 +159,11 @@ int main() {
 
 	cout << "reverse level order traversal: ";
 	reverse_levelOrder(&t1);
-	
+	cout << "\n";
+
+	cout << "lowest common ancestor of 23 and 45 is: ";
+	cout << lca(&t1, &t6, &t7)->get_data();
+
 	return 0;
 }
 /**
@@ -285,11 +290,27 @@ void reverse_levelOrder(binary_tree* root) {
   The lowest common ancestor of two given nodes node1 and node2 needs to be found
   in a BST whose root node is 'root';
 */
-binary_tree* lowest_common_ancestor(binary_tree* root, binary_tree* node1, binary_tree* node2) {
+binary_tree* lca_in_BST(binary_tree* root, binary_tree* node1, binary_tree* node2) {
 	if(root->get_data() > max(node1->get_data(), node2->get_data()))
-		return lowest_common_ancestor(root->get_left(), node1, node2);
+		return lca_in_BST(root->get_left(), node1, node2);
 	else if(root->get_data() < min(node1->get_data(), node2->get_data()))
-		return lowest_common_ancestor(root->get_right(), node1, node2);
+		return lca_in_BST(root->get_right(), node1, node2);
 	else
 		return root;
+}
+
+/*
+  The lowest common ancestor of two given nodes node1 and node2 needs to be found
+  in a binary tree whose root node is 'root';
+*/
+binary_tree* lca(binary_tree* root, binary_tree* node1, binary_tree* node2) {
+	if(root == NULL || root->get_data() == node1->get_data() || root->get_data() == node2->get_data())
+		return root;
+	binary_tree* left = lca(root->get_left(), node1, node2);
+	binary_tree* right = lca(root->get_right(), node1, node2);
+	if(left!=NULL && right!= NULL)
+		return root;
+	if(left==NULL && right==NULL)
+		return NULL;
+	return (left!=NULL ? left : right);
 }
