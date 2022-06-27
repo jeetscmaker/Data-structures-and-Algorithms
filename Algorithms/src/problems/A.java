@@ -5,6 +5,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class A {
+    public static int superDigit(String n, int k) {
+        StringBuilder s = new StringBuilder();
+        for(int i=1; i<=k; i++)
+            s = s.append(n);
+        return ss(s.toString());
+    }
+
+    private static int ss(String s) {
+        if (s.length() == 1) {
+            return Integer.parseInt(s);
+        }
+        int sum = 0;
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+
+            sum += Character.getNumericValue(c);
+        }
+        return ss(String.valueOf(sum));
+    }
 
     public static void main(String[] args) {
         String in = "abc";
@@ -53,7 +72,6 @@ public class A {
             if (x[i] != first && x[i] != second)
                 System.out.print(x[i] + " ");
         }
-
     }
 
     public static String reverse(String input) {

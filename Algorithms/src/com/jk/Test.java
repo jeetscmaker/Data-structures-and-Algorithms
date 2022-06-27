@@ -1,52 +1,58 @@
 package com.jk;
 
-import static java.util.stream.Collectors.toList;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
-
-class Result {
-public static int birthdayCakeCandles(List<Integer> candles) {
-    // Write your code here
-    int n = candles.size();
-    if(n == 1){
-        return candles.get(0);
-    }
-    Collections.sort(candles);
-    int count=0;
-    for(int i = n-1; i>0; i--){
-        if(candles.get(i).equals(candles.get(i-1))){
-            count++;
-        } else
-            break;
-    }
-    return count+1;
-    }
-}
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class Test {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int candlesCount = Integer.parseInt(bufferedReader.readLine().trim());
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
-        List<Integer> candles = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
-            .collect(toList());
+        int cases = input.nextInt();
 
-        int result = Result.birthdayCakeCandles(candles);
+        for (int i = 0; i < cases; i++) {
+            int numWords = input.nextInt();
+            String[] words = new String[numWords];
+            for (int j = 0; j < numWords; j++) {
+                words[j] = input.next();
+            }
+            String password = input.next();
 
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
+            noSolution = new HashSet<String>();
 
-        bufferedReader.close();
-        bufferedWriter.close();
+            String result = helper(password, words, "");
+
+            if (!result.equals("WRONG PASSWORD")) {
+                result = result.substring(1);
+            }
+
+            System.out.println(result);
+        }
+    }
+
+    public static Set<String> noSolution;
+
+    public static String helper(String password, String[] words, String curRes) {
+        if (password.equals("")) {
+            return curRes;
+        } else if (noSolution.contains(password)) {
+            return "WRONG PASSWORD";
+        }
+
+        for (int i = 0; i < words.length; i++) {
+            if (password.indexOf(words[i]) == 0) {
+                String append = curRes + " " + words[i];
+                String res = helper(password.substring(words[i].length()), words, append);
+
+                if (!res.equals("WRONG PASSWORD")) {
+                    return res;
+                }
+            }
+        }
+
+        noSolution.add(password);
+
+        return "WRONG PASSWORD";
     }
 }
